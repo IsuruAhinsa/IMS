@@ -22,22 +22,33 @@
                 </div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
+                <div class="dropdown-header">
+                    <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle border" alt="User Image" width="72">
+                    <br>
+                    Alexander Pierce
+                    {{--{{ Auth::user()->name }}--}}
+                </div>
                 <a class="dropdown-item" href="#">
                     <i class="fas fa-user-circle mr-2"></i>
                     My Profile
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-danger" href="#">
+                <a
+                    class="dropdown-item text-danger"
+                    href="{{ route('logout') }}"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                >
                     <i class="fas fa-sign-out-alt mr-2"></i>
                     Logout
                 </a>
+                @include('forms.logout')
             </div>
         </li>
         <!-- Notifications Dropdown Menu -->
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="far fa-bell"></i>
-                <span class="badge badge-warning navbar-badge">15</span>
+                <span class="badge badge-danger navbar-badge">15</span>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <a href="#" class="dropdown-item">
@@ -88,7 +99,7 @@
                     <!-- Message End -->
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+                <a href="#" class="dropdown-item dropdown-footer text-primary">See All Notifications</a>
             </div>
         </li>
         {{-- Sidebar --}}
