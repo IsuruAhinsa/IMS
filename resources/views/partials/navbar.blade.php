@@ -15,45 +15,83 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
         {{-- User Content Dropdown Menu --}}
-        <li class="nav-item dropdown">
-            <a class="nav-link" data-toggle="dropdown" href="#">
-                <div class="user-block user-block-sm">
+        <li class="nav-item dropdown user-menu">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                @if(Auth::check())
+                    @if(Auth::user()->avatar)
+                        {{-- only testing purposes --}}
+                        <img src="{{ asset('img/user2-160x160.jpg') }}" class="user-image img-circle elevation-2" alt="User Image">
+                    @else
+                        <img src="{{ asset('img/user2-160x160.jpg') }}" class="user-image img-circle elevation-2" alt="User Image">
+                    @endif
+                @endif
+                <span class="d-none d-md-inline">
                     @if(Auth::check())
-                        @if(Auth::user()->avatar)
-                            <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle border" alt="User Image">
+                        @if(Auth::user()->first_name && Auth::user()->last_name)
+                            {{ Auth::user()->first_name . " " . Auth::user()->last_name }}
                         @else
-                            <i class="fa fa-user-circle text-dark fa-2x"></i>
+                            {{ Auth::user()->email }}
                         @endif
                     @endif
-                </div>
+                </span>
             </a>
-            <div class="dropdown-menu dropdown-menu-right">
-                <div class="dropdown-header">
+            <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                <!-- User image -->
+                <li class="user-header bg-primary">
                     @if(Auth::check())
                         @if(Auth::user()->avatar)
-                            <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle border" alt="User Image" width="72">
+                            {{-- only testing purposes --}}
+                            <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
                         @else
-                            <i class="fa fa-user-circle text-dark fa-3x"></i>
+                            <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
                         @endif
                     @endif
-                    <br><br>
-                    {{ Auth::user()->email }}
-                </div>
-                <a class="dropdown-item" href="#">
-                    <i class="fas fa-user-circle mr-2"></i>
-                    My Profile
-                </a>
-                <div class="dropdown-divider"></div>
-                <a
-                    class="dropdown-item text-danger"
-                    href="{{ route('logout') }}"
-                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                >
-                    <i class="fas fa-sign-out-alt mr-2"></i>
-                    Logout
-                </a>
+                    <p>
+                        @if(Auth::check())
+                            @if(Auth::user()->first_name && Auth::user()->last_name)
+                                {{ Auth::user()->first_name . " " . Auth::user()->last_name }}
+                            @else
+                                {{ Auth::user()->email }}
+                            @endif
+                        @endif
+                        <small>
+                            Member since
+                            {{ Auth::user()->created_at->toFormattedDateString() }}
+                        </small>
+                    </p>
+                </li>
+                <!-- Menu Body -->
+                <li class="user-body border-bottom-0">
+                    <div class="row">
+                        <div class="col-4 text-center">
+                            <a href="#">Followers</a>
+                        </div>
+                        <div class="col-4 text-center">
+                            <a href="#">Sales</a>
+                        </div>
+                        <div class="col-4 text-center">
+                            <a href="#">Friends</a>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </li>
+                <!-- Menu Footer-->
+                <li class="user-footer">
+                    <a href="#" class="btn btn-default btn-flat">
+                        <i class="fas fa-user-circle mr-2"></i>
+                        Profile
+                    </a>
+                    <a
+                        class="btn btn-default btn-flat float-right"
+                        href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                    >
+                        <i class="fas fa-sign-out-alt mr-2"></i>
+                        Sign out
+                    </a>
+                </li>
                 @include('forms.logout')
-            </div>
+            </ul>
         </li>
         <!-- Notifications Dropdown Menu -->
         <li class="nav-item dropdown">
