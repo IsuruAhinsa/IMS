@@ -18,15 +18,26 @@
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <div class="user-block user-block-sm">
-                    <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle border" alt="User Image">
+                    @if(Auth::check())
+                        @if(Auth::user()->avatar)
+                            <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle border" alt="User Image">
+                        @else
+                            <i class="fa fa-user-circle text-dark fa-2x"></i>
+                        @endif
+                    @endif
                 </div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-header">
-                    <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle border" alt="User Image" width="72">
-                    <br>
-                    Alexander Pierce
-                    {{--{{ Auth::user()->name }}--}}
+                    @if(Auth::check())
+                        @if(Auth::user()->avatar)
+                            <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle border" alt="User Image" width="72">
+                        @else
+                            <i class="fa fa-user-circle text-dark fa-3x"></i>
+                        @endif
+                    @endif
+                    <br><br>
+                    {{ Auth::user()->email }}
                 </div>
                 <a class="dropdown-item" href="#">
                     <i class="fas fa-user-circle mr-2"></i>

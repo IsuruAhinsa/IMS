@@ -12,10 +12,24 @@
 
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+                @if(Auth::check())
+                    @if(Auth::user()->avatar)
+                        <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+                    @else
+                        <i class="fa fa-user-circle text-white fa-2x"></i>
+                    @endif
+                @endif
             </div>
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="#" class="d-block">
+                    @if(Auth::check())
+                        @if(Auth::user()->first_name && Auth::user()->last_name)
+                            {{ Auth::user()->first_name . " " . Auth::user()->last_name }}
+                        @else
+                            {{ Auth::user()->email }}
+                        @endif
+                    @endif
+                </a>
             </div>
         </div>
 
