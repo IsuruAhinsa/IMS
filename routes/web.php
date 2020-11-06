@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
     Route::get('/', 'IndexController@index')->name('index');
+    Route::get('profile', 'ProfileController@index')->name('profile');
 });
 
 Auth::routes(['register' => false]);

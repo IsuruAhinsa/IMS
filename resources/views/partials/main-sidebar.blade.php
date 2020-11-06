@@ -14,9 +14,11 @@
             <div class="image">
                 @if(Auth::check())
                     @if(Auth::user()->avatar)
-                        <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+
                     @else
-                        <i class="fa fa-user-circle text-white fa-2x"></i>
+                        <img class="img-circle elevation-2"
+                             src="{{ asset('img/profile/avatar/default.png') }}"
+                             alt="User profile picture">
                     @endif
                 @endif
             </div>

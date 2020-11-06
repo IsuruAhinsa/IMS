@@ -19,10 +19,11 @@
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                 @if(Auth::check())
                     @if(Auth::user()->avatar)
-                        {{-- only testing purposes --}}
-                        <img src="{{ asset('img/user2-160x160.jpg') }}" class="user-image img-circle elevation-2" alt="User Image">
+
                     @else
-                        <img src="{{ asset('img/user2-160x160.jpg') }}" class="user-image img-circle elevation-2" alt="User Image">
+                        <img class="user-image img-circle elevation-2"
+                             src="{{ asset('img/profile/avatar/default.png') }}"
+                             alt="User profile picture">
                     @endif
                 @endif
                 <span class="d-none d-md-inline">
@@ -40,10 +41,11 @@
                 <li class="user-header bg-primary">
                     @if(Auth::check())
                         @if(Auth::user()->avatar)
-                            {{-- only testing purposes --}}
-                            <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+
                         @else
-                            <img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+                            <img class="img-circle elevation-2"
+                                 src="{{ asset('img/profile/avatar/default.png') }}"
+                                 alt="User profile picture">
                         @endif
                     @endif
                     <p>
@@ -77,7 +79,7 @@
                 </li>
                 <!-- Menu Footer-->
                 <li class="user-footer">
-                    <a href="#" class="btn btn-default btn-flat">
+                    <a href="{{ route('profile') }}" class="btn btn-default btn-flat">
                         <i class="fas fa-user-circle mr-2"></i>
                         Profile
                     </a>
