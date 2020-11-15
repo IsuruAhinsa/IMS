@@ -1,4 +1,4 @@
-<form class="form-horizontal" action="#" method="POST">
+<form class="form-horizontal" action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
 
     @csrf
 
@@ -6,11 +6,12 @@
         <label for="first_name" class="col-sm-2 col-form-label">First Name</label>
         <div class="col-sm-10">
             <input
-                type="email"
+                type="text"
                 class="form-control"
                 id="first_name"
                 placeholder="Enter First Name"
                 name="first_name"
+                value="{{ Auth::user()->first_name }}"
             >
         </div>
     </div>
@@ -19,11 +20,12 @@
         <label for="last_name" class="col-sm-2 col-form-label">Last Name</label>
         <div class="col-sm-10">
             <input
-                type="email"
+                type="text"
                 class="form-control"
                 id="last_name"
                 placeholder="Enter Last Name"
                 name="last_name"
+                value="{{ Auth::user()->last_name }}"
             >
         </div>
     </div>
@@ -37,6 +39,7 @@
                 id="email"
                 placeholder="Enter Email"
                 name="email"
+                value="{{ Auth::user()->email }}"
             >
         </div>
     </div>
@@ -50,6 +53,7 @@
                 id="phone"
                 placeholder="Enter Phone Number"
                 name="phone"
+                value="{{ Auth::user()->phone }}"
             >
         </div>
     </div>
@@ -63,6 +67,7 @@
                 id="website"
                 placeholder="Enter Website"
                 name="website"
+                value="{{ Auth::user()->website }}"
             >
         </div>
     </div>
@@ -76,6 +81,7 @@
                 id="address"
                 placeholder="Enter Address"
                 name="address"
+                value="{{ Auth::user()->address }}"
             >
         </div>
     </div>
@@ -89,6 +95,7 @@
                 id="city"
                 placeholder="Enter City"
                 name="city"
+                value="{{ Auth::user()->city }}"
             >
         </div>
     </div>
@@ -102,6 +109,7 @@
                 id="state"
                 placeholder="Enter State"
                 name="state"
+                value="{{ Auth::user()->state }}"
             >
         </div>
     </div>
@@ -115,6 +123,7 @@
                 id="zip"
                 placeholder="Enter Zip"
                 name="zip"
+                value="{{ Auth::user()->zip }}"
             >
         </div>
     </div>
@@ -128,6 +137,7 @@
                 id="country"
                 placeholder="Enter Country"
                 name="country"
+                value="{{ Auth::user()->country }}"
             >
         </div>
     </div>
@@ -141,13 +151,30 @@
                 placeholder="Notes"
                 name="notes"
                 rows="5"
-            ></textarea>
+            >{{ Auth::user()->notes }}</textarea>
         </div>
     </div>
 
     <div class="form-group row">
         <label for="avatar" class="col-sm-2 col-form-label">Avatar</label>
-        <div class="col-sm-10">
+
+        @if(!empty(Auth::user()->avatar))
+
+            <div class="col-sm-2">
+
+                <img class="img-thumbnail img-fluid" src="{{ asset(Auth::user()->avatar) }}" alt="{{ Auth::user()->avatar }}" width="100%">
+
+                <input
+                    type="hidden"
+                    name="current_avatar"
+                    value="{{ Auth::user()->avatar }}"
+                >
+
+            </div>
+
+        @endif
+
+        <div class="@if(!empty(Auth::user()->avatar)) col-sm-8 @else col-sm-10 @endif">
             <div class="custom-file">
                 <input
                     type="file"
@@ -156,16 +183,23 @@
                     name="avatar"
                 >
                 <label class="custom-file-label" for="customFile">Choose file</label>
+                <small class="form-text text-muted">
+                    Accepted filetypes are jpg, jpeg, png, gif, and svg. Max upload size allowed is 1024MB
+                </small>
             </div>
         </div>
     </div>
 
     <div class="form-group row">
         <div class="offset-sm-2 col-sm-10 text-right">
+            <a href="{{ url('/') }}" class="btn btn-link">Cancel</a>
             <button
                 type="submit"
                 class="btn btn-primary"
-            >Save Profile</button>
+            >
+                <i class="fa fa-save mr-2"></i>
+                Save Profile
+            </button>
         </div>
     </div>
 

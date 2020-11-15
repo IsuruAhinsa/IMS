@@ -19,7 +19,9 @@
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                 @if(Auth::check())
                     @if(Auth::user()->avatar)
-
+                        <img class="user-image img-circle elevation-2"
+                             src="{{ asset(Auth::user()->avatar) }}"
+                             alt="User profile picture">
                     @else
                         <img class="user-image img-circle elevation-2"
                              src="{{ asset('img/profile/avatar/default.png') }}"
@@ -41,7 +43,9 @@
                 <li class="user-header bg-primary">
                     @if(Auth::check())
                         @if(Auth::user()->avatar)
-
+                            <img class="img-circle elevation-2"
+                                 src="{{ asset(Auth::user()->avatar) }}"
+                                 alt="User profile picture">
                         @else
                             <img class="img-circle elevation-2"
                                  src="{{ asset('img/profile/avatar/default.png') }}"
