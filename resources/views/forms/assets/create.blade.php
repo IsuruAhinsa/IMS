@@ -166,7 +166,7 @@
             </select>
         </div>
         <div class="col-md-1 text-right">
-            <a href="#" class="btn bg-primary">New</a>
+            <a href="#" class="btn bg-gradient-primary btn-flat">New</a>
         </div>
     </div>
 
