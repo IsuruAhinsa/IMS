@@ -15,11 +15,26 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', 'IndexController@index')->name('index');
-    Route::get('profile', 'ProfileController@index')->name('profile');
-    Route::post('profile/update', 'ProfileController@update')->name('profile.update');
-    Route::get('password/change', 'ProfileController@showChangePasswordForm')->name('show.password');
-    Route::post('password/change', 'ProfileController@changePassword')->name('update.password');
+
+    Route::get('/', 'IndexController@index')
+        ->name('index');
+
+    Route::get('profile', 'ProfileController@index')
+        ->name('profile');
+
+    Route::post('profile/update', 'ProfileController@update')
+        ->name('profile.update');
+
+    Route::get('password/change', 'ProfileController@showChangePasswordForm')
+        ->name('show.password');
+
+    Route::post('password/change', 'ProfileController@changePassword')
+        ->name('update.password');
+
+    /*
+     *  Assets
+     */
+    Route::resource('assets', 'AssetController');
 });
 
 Auth::routes(['register' => false]);

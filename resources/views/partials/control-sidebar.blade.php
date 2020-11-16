@@ -5,7 +5,7 @@
 
         <ul class="list-unstyled">
             <li>
-                <a class="btn btn-app">
+                <a class="btn btn-app" href="{{ route('assets.create') }}">
                     <i class="fas fa-barcode"></i>
                     Asset
                 </a>
