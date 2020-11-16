@@ -160,7 +160,7 @@
         {{-- Sidebar --}}
         <li class="nav-item">
             <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                <i class="fas fa-cog"></i>
+                <i class="fas fa-plus-circle"></i>
             </a>
         </li>
     </ul>
