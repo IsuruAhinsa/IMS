@@ -147,6 +147,29 @@
         </div>
     </div>
 
+    <div class="form-group row">
+        <label class="col-md-2 col-form-label" for="warranty_status">Warranty Status</label>
+        <div class="col-md-9">
+            <select
+                class="form-control select2bs4"
+                style="width: 100%;"
+                name="warranty_status"
+                id="warranty_status"
+            >
+                <option selected disabled>Select Status</option>
+                <option>Alaska</option>
+                <option>California</option>
+                <option>Delaware</option>
+                <option>Tennessee</option>
+                <option>Texas</option>
+                <option>Washington</option>
+            </select>
+        </div>
+        <div class="col-md-1 text-right">
+            <a href="#" class="btn bg-primary">New</a>
+        </div>
+    </div>
+
 </form>
 
 @push('js')
