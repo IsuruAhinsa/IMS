@@ -6,8 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="apple-touch-icon" href="{{ ($commonSetting) && ($commonSetting->favicon != '') ?  asset('uploads/settings/'.$commonSetting->logo) : asset('img/logo.png') }}">
+    <link rel="apple-touch-startup-image" href="{{ ($commonSetting) && ($commonSetting->favicon != '') ?  asset('uploads/settings/'.$commonSetting->logo) : asset('img/logo.png') }}">
+    <link rel="shortcut icon" type="image/ico" sizes="32" href="{{ ($commonSetting) && ($commonSetting->favicon != '') ?  asset('uploads/settings/'.$commonSetting->favicon) : asset('favicon.ico') }} ">
+
     <title>
-        @yield('title') | {{ config('app.name', 'IMS') }}
+        @yield('title') | {{ isset($commonSetting) ? $commonSetting->site_name : config('app.name', 'IMS') }}
     </title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">

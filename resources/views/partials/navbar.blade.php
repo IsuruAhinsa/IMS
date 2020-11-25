@@ -1,4 +1,4 @@
-<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+<nav class="main-header navbar navbar-expand @if(isset($commonSetting) && $commonSetting->navbar_color != 'navbar-white') {{ $commonSetting->navbar_color }} navbar-dark @else navbar-white navbar-light @endif">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
         <li class="nav-item">
@@ -40,7 +40,7 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <!-- User image -->
-                <li class="user-header bg-primary">
+                <li class="user-header bg-{{ $commonSetting ? $commonSetting->skin : 'primary' }}">
                     @if(Auth::check())
                         @if(Auth::user()->avatar)
                             <img class="img-circle elevation-2"

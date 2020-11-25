@@ -10,6 +10,12 @@
                     Asset
                 </a>
             </li>
+            <li>
+                <a class="btn btn-app" href="{{ route('hospitals.create') }}">
+                    <i class="fas fa-hospital-symbol"></i>
+                    Hospital
+                </a>
+            </li>
         </ul>
 
     </div>

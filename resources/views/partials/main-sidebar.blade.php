@@ -1,10 +1,14 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar {{ $commonSetting ? $commonSetting->sidebar_color : 'sidebar-dark' }}-{{ $commonSetting ?  $commonSetting->skin : 'primary' }} elevation-4">
     <!-- Brand Logo -->
     <a href="{{ url('/') }}" class="brand-link">
-        <img src="{{ asset('img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-             style="opacity: .8">
+        @if (isset($commonSetting->logo))
+            <img
+                src="{{ asset('uploads/settings/'.$commonSetting->logo) }}"
+                alt="{{ $commonSetting->site_name }} logo" class="brand-image img-circle elevation-3"
+                style="opacity: .8">
+        @endif
         <span class="brand-text font-weight-bold">
-            {{ config('app.name', 'IMS') }}
+            {{ $commonSetting ? $commonSetting->site_name : 'IMS' }}
         </span>
     </a>
 
@@ -42,10 +46,16 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link active">
+                    <a href="{{ url('/') }}" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
+                        </p>
+                    </a>
+                    <a href="{{ route('settings.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-cog"></i>
+                        <p>
+                            Settings
                         </p>
                     </a>
                 </li>

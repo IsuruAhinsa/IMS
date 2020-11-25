@@ -7,7 +7,7 @@
         <div class="col-sm-10">
             <input
                 type="text"
-                class="form-control"
+                class="form-control rounded-0"
                 id="first_name"
                 placeholder="Enter First Name"
                 name="first_name"
@@ -21,7 +21,7 @@
         <div class="col-sm-10">
             <input
                 type="text"
-                class="form-control"
+                class="form-control rounded-0"
                 id="last_name"
                 placeholder="Enter Last Name"
                 name="last_name"
@@ -35,7 +35,7 @@
         <div class="col-sm-10">
             <input
                 type="email"
-                class="form-control"
+                class="form-control rounded-0"
                 id="email"
                 placeholder="Enter Email"
                 name="email"
@@ -49,7 +49,7 @@
         <div class="col-sm-10">
             <input
                 type="text"
-                class="form-control"
+                class="form-control rounded-0"
                 id="phone"
                 placeholder="Enter Phone Number"
                 name="phone"
@@ -63,7 +63,7 @@
         <div class="col-sm-10">
             <input
                 type="text"
-                class="form-control"
+                class="form-control rounded-0"
                 id="website"
                 placeholder="Enter Website"
                 name="website"
@@ -77,7 +77,7 @@
         <div class="col-sm-10">
             <input
                 type="text"
-                class="form-control"
+                class="form-control rounded-0"
                 id="address"
                 placeholder="Enter Address"
                 name="address"
@@ -91,7 +91,7 @@
         <div class="col-sm-10">
             <input
                 type="text"
-                class="form-control"
+                class="form-control rounded-0"
                 id="city"
                 placeholder="Enter City"
                 name="city"
@@ -105,7 +105,7 @@
         <div class="col-sm-10">
             <input
                 type="text"
-                class="form-control"
+                class="form-control rounded-0"
                 id="state"
                 placeholder="Enter State"
                 name="state"
@@ -119,7 +119,7 @@
         <div class="col-sm-10">
             <input
                 type="text"
-                class="form-control"
+                class="form-control rounded-0"
                 id="zip"
                 placeholder="Enter Zip"
                 name="zip"
@@ -133,7 +133,7 @@
         <div class="col-sm-10">
             <input
                 type="text"
-                class="form-control"
+                class="form-control rounded-0"
                 id="country"
                 placeholder="Enter Country"
                 name="country"
@@ -146,7 +146,7 @@
         <label for="notes" class="col-sm-2 col-form-label">Notes</label>
         <div class="col-sm-10">
             <textarea
-                class="form-control"
+                class="form-control rounded-0"
                 id="notes"
                 placeholder="Notes"
                 name="notes"
@@ -162,7 +162,7 @@
 
             <div class="col-sm-2">
 
-                <img class="img-thumbnail img-fluid" src="{{ asset(Auth::user()->avatar) }}" alt="{{ Auth::user()->avatar }}" width="100%">
+                <img class="img-thumbnail img-fluid rounded-0" src="{{ asset(Auth::user()->avatar) }}" alt="{{ Auth::user()->avatar }}" width="100%">
 
                 <input
                     type="hidden"
@@ -178,11 +178,11 @@
             <div class="custom-file">
                 <input
                     type="file"
-                    class="custom-file-input"
+                    class="custom-file-input rounded-0"
                     id="avatar"
                     name="avatar"
                 >
-                <label class="custom-file-label" for="customFile">Choose file</label>
+                <label class="custom-file-label rounded-0" for="customFile">Choose file</label>
                 <small class="form-text text-muted">
                     Accepted filetypes are jpg, jpeg, png, gif, and svg. Max upload size allowed is 1024MB
                 </small>
@@ -195,7 +195,7 @@
             <a href="{{ url('/') }}" class="btn btn-link">Cancel</a>
             <button
                 type="submit"
-                class="btn btn-primary"
+                class="btn bg-gradient-indigo btn-flat"
             >
                 <i class="fa fa-save mr-2"></i>
                 Save Profile

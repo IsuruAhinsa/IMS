@@ -35,6 +35,25 @@ Route::middleware('auth')->group(function () {
      *  Assets
      */
     Route::resource('assets', 'AssetController');
+    /*
+     *  Hospitals
+     */
+    Route::resource('hospitals', 'HospitalController');
+
+    /* Settings */
+    Route::get('settings', 'SettingController@settings')->name('settings.index');
+
+    /* General Settings */
+    Route::post('settings', 'SettingController@updateSettings')->name('settings.general.update');
+
+    /* Branding Settings */
+    Route::post('branding', 'SettingController@updateBranding')->name('settings.branding.update');
+
+    /* Security Settings */
+    Route::post('security', 'SettingController@updateSecurity')->name('settings.security.update');
+
+    /* Localization Settings */
+    Route::post('localization', 'SettingController@updateLocalization')->name('settings.localization.update');
 });
 
 Auth::routes(['register' => false]);

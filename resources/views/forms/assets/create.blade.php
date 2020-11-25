@@ -10,12 +10,35 @@
     @csrf
 
     <div class="form-group row">
+        <label class="col-md-2 col-form-label" for="hospital">Hospital</label>
+        <div class="col-md-9">
+            <select
+                class="form-control select2bs4 rounded-0"
+                style="width: 100%;"
+                name="hospital"
+                id="hospital"
+            >
+                <option selected disabled>Select Hospital</option>
+                <option>Alaska</option>
+                <option>California</option>
+                <option>Delaware</option>
+                <option>Tennessee</option>
+                <option>Texas</option>
+                <option>Washington</option>
+            </select>
+        </div>
+        <div class="col-md-1 text-right">
+            <a href="#" class="btn bg-gradient-primary btn-flat">New</a>
+        </div>
+    </div>
+
+    <div class="form-group row">
         <label for="brand" class="col-md-2 col-form-label">Brand</label>
         <div class="col-md-10">
             <input
                 type="text"
                 id="brand"
-                class="form-control"
+                class="form-control rounded-0"
                 placeholder="Brand"
             >
         </div>
@@ -27,7 +50,7 @@
             <input
                 type="text"
                 id="model"
-                class="form-control"
+                class="form-control rounded-0"
                 placeholder="Model"
             >
         </div>
@@ -39,7 +62,7 @@
             <input
                 type="text"
                 id="serial"
-                class="form-control"
+                class="form-control rounded-0"
                 placeholder="Serial Number"
             >
         </div>
@@ -51,13 +74,13 @@
             <div class="input-group date" id="purchase_date" data-target-input="nearest">
                 <input
                     type="text"
-                    class="form-control datetimepicker-input"
+                    class="form-control rounded-0 datetimepicker-input"
                     data-target="#purchase_date"
                     id="purchase_date"
                     name="purchase_date"
                 />
                 <div class="input-group-append" data-target="#purchase_date" data-toggle="datetimepicker">
-                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    <div class="input-group-text rounded-0"><i class="fa fa-calendar"></i></div>
                 </div>
             </div>
         </div>
@@ -69,12 +92,12 @@
             <div class="input-group">
                 <input
                     type="text"
-                    class="form-control"
+                    class="form-control rounded-0"
                     name="warranty_period"
                     id="warranty_period"
                 >
                 <div class="input-group-append">
-                    <span class="input-group-text">months</span>
+                    <span class="input-group-text rounded-0">months</span>
                 </div>
             </div>
         </div>
@@ -86,12 +109,12 @@
             <div class="input-group date" id="warranty_end_date" data-target-input="nearest">
                 <input
                     type="text"
-                    class="form-control datetimepicker-input"
+                    class="form-control rounded-0 datetimepicker-input"
                     data-target="#warranty_end_date"
                     id="warranty_end_date"
                 />
                 <div class="input-group-append" data-target="#warranty_end_date" data-toggle="datetimepicker">
-                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    <div class="input-group-text rounded-0"><i class="fa fa-calendar"></i></div>
                 </div>
             </div>
         </div>
@@ -101,7 +124,7 @@
         <label class="col-md-2 col-form-label" for="warranty_status">Warranty Status</label>
         <div class="col-md-10">
             <select
-                class="form-control select2bs4"
+                class="form-control rounded-0 select2bs4"
                 style="width: 100%;"
                 name="warranty_status"
                 id="warranty_status"
@@ -123,12 +146,12 @@
             <div class="input-group">
                 <input
                     type="text"
-                    class="form-control"
+                    class="form-control rounded-0"
                     name="cost"
                     id="cost"
                 >
                 <div class="input-group-append">
-                    <span class="input-group-text">$</span>
+                    <span class="input-group-text rounded-0">$</span>
                 </div>
             </div>
         </div>
@@ -141,22 +164,22 @@
                 type="text"
                 id="variation"
                 name="variation"
-                class="form-control"
+                class="form-control rounded-0"
                 placeholder="Variation"
             >
         </div>
     </div>
 
     <div class="form-group row">
-        <label class="col-md-2 col-form-label" for="warranty_status">Warranty Status</label>
+        <label class="col-md-2 col-form-label" for="location">Location</label>
         <div class="col-md-9">
             <select
-                class="form-control select2bs4"
+                class="form-control select2bs4 rounded-0"
                 style="width: 100%;"
-                name="warranty_status"
-                id="warranty_status"
+                name="location"
+                id="location"
             >
-                <option selected disabled>Select Status</option>
+                <option selected disabled>Select Location</option>
                 <option>Alaska</option>
                 <option>California</option>
                 <option>Delaware</option>
@@ -168,6 +191,11 @@
         <div class="col-md-1 text-right">
             <a href="#" class="btn bg-gradient-primary btn-flat">New</a>
         </div>
+    </div>
+
+    <div class="text-right">
+        <a href="{{ url('/') }}" class="btn btn-link">Cancel</a>
+        <button type="submit" class="btn btn-primary">Save Asset</button>
     </div>
 
 </form>
