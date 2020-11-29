@@ -49,7 +49,7 @@
             </div>
             @if($setting->logo)
                 <div class="p-2">
-                    <div class="icheck-{{ $commonSetting->skin }} d-inline">
+                    <div class="icheck-{{ $commonSetting ? $commonSetting->skin : 'primary' }} d-inline">
                         <input type="checkbox" id="remove_logo" name="remove_logo" value="1">
                         <label class="font-weight-normal" for="remove_logo">Remove current logo</label>
                     </div>
@@ -86,7 +86,7 @@
             </div>
             @if($setting->favicon)
                 <div class="p-2">
-                    <div class="icheck-{{ $commonSetting->skin }} d-inline">
+                    <div class="icheck-{{ $commonSetting ? $commonSetting->skin : 'primary' }} d-inline">
                         <input type="checkbox" id="remove_favicon" name="remove_favicon" value="1">
                         <label class="font-weight-normal" for="remove_favicon">Remove current favicon</label>
                     </div>
@@ -122,7 +122,7 @@
                 </small>
                 @if($setting->email_logo)
                     <div class="p-2">
-                        <div class="icheck-{{ $commonSetting->skin }} d-inline">
+                        <div class="icheck-{{ $commonSetting ? $commonSetting->skin : 'primary' }} d-inline">
                             <input type="checkbox" id="remove_email_logo" name="remove_email_logo" value="1">
                             <label class="font-weight-normal" for="remove_email_logo">Remove current email logo</label>
                         </div>

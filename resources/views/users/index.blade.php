@@ -29,7 +29,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="card card-{{ $commonSetting->skin ? $commonSetting->skin : 'primary' }} card-outline">
+                    <div class="card card-{{ $commonSetting ? $commonSetting->skin : 'primary' }} card-outline">
                         <div class="card-body">
                             <table id="example" class="table table-sm table-hover table-borderless" style="width:100%">
                                 <thead>

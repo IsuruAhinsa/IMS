@@ -3,7 +3,7 @@
         <a href="{{ url('/') }}" class="btn btn-link">Cancel</a>
         <button
             type="submit"
-            class="btn bg-gradient-{{ $commonSetting->skin ? $commonSetting->skin : 'primary' }} btn-flat"
+            class="btn bg-gradient-{{ $commonSetting ? $commonSetting->skin : 'primary' }} btn-flat"
         >
             <i class="fa fa-save mr-2"></i>
             {{ $btnText }}

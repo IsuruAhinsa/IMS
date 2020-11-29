@@ -27,7 +27,7 @@
         <div class="container-fluid">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-4">
-                    <div class="card card-{{ $commonSetting->skin ? $commonSetting->skin : 'primary' }} card-outline">
+                    <div class="card card-{{ $commonSetting ? $commonSetting->skin : 'primary' }} card-outline">
                         <div class="card-body box-profile">
                             <div class="text-center">
                                 @if(Auth::user()->avatar)

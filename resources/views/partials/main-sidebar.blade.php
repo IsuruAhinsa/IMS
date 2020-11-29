@@ -1,7 +1,7 @@
 <aside class="main-sidebar {{ $commonSetting ? $commonSetting->sidebar_color : 'sidebar-dark' }}-{{ $commonSetting ?  $commonSetting->skin : 'primary' }} elevation-4">
     <!-- Brand Logo -->
     <a href="{{ url('/') }}" class="brand-link">
-        @if (isset($commonSetting->logo))
+        @if (isset($commonSetting))
             <img
                 src="{{ asset('uploads/settings/'.$commonSetting->logo) }}"
                 alt="{{ $commonSetting->site_name }} logo" class="brand-image img-circle elevation-3"

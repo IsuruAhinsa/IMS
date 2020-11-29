@@ -8,7 +8,7 @@
 
     <section class="content pt-3">
         <div class="container-fluid">
-            <div class="card card-{{ $commonSetting->skin ? $commonSetting->skin : 'primary' }} card-outline">
+            <div class="card card-{{ $commonSetting ? $commonSetting->skin : 'primary' }} card-outline">
                 <div class="card-body">
                     <h4>
                         Settings

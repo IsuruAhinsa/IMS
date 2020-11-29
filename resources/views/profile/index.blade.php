@@ -26,7 +26,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <div class="card card-{{ $commonSetting->skin ? $commonSetting->skin : 'primary' }} card-outline">
+                    <div class="card card-{{ $commonSetting ? $commonSetting->skin : 'primary' }} card-outline">
                         <div class="card-body box-profile">
                             <div class="text-center">
                                 @if(Auth::user()->avatar)
@@ -62,12 +62,12 @@
                                 </li>
                             </ul>
 
-                            <a href="{{ route('show.password') }}" class="btn btn-{{ $commonSetting->skin ? $commonSetting->skin : 'primary' }} btn-block"><b>Change Password</b></a>
+                            <a href="{{ route('show.password') }}" class="btn btn-{{ $commonSetting ? $commonSetting->skin : 'primary' }} btn-block"><b>Change Password</b></a>
                         </div>
 
                     </div>
 
-                    <div class="card card-{{ $commonSetting->skin ? $commonSetting->skin : 'primary' }}">
+                    <div class="card card-{{ $commonSetting ? $commonSetting->skin : 'primary' }}">
                         <div class="card-header">
                             <h3 class="card-title">About Me</h3>
                         </div>
