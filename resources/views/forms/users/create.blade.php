@@ -188,9 +188,9 @@
     <div class="form-group row">
         <label for="avatar" class="col-sm-3 col-form-label">Avatar</label>
 
-        @if(Request::is('profile/*') || Request::is('users/*'))
+        @if(Route::currentRouteName() == 'profile' || Route::currentRouteName() == 'users.edit')
 
-            @if(Auth::user()->avatar || $user->avatar)
+            @if(Auth::user()->avatar || isset($user->avatar))
 
                 <div class="col-sm-2">
 
@@ -202,7 +202,7 @@
 
         @endif
 
-        <div class="@if(Request::is('profile/*') || Request::is('users/*')) @if(Auth::user()->avatar || $user->avatar) col-sm-7 @else col-sm-9 @endif @else col-sm-9 @endif">
+        <div class="@if(Route::currentRouteName() == 'profile' || Route::currentRouteName() == 'users.edit') @if(Auth::user()->avatar || isset($user->avatar)) col-sm-7 @else col-sm-9 @endif @else col-sm-9 @endif">
             <div class="custom-file">
                 <input
                     type="file"

@@ -62,7 +62,7 @@
                                 </li>
                             </ul>
 
-                            <a href="{{ route('show.password') }}" class="btn btn-{{ $commonSetting ? $commonSetting->skin : 'primary' }} btn-block"><b>Change Password</b></a>
+                            <a href="{{ route('show.password') }}" class="btn bg-{{ $commonSetting ? $commonSetting->skin : 'primary' }} btn-block"><b>Change Password</b></a>
                         </div>
 
                     </div>
