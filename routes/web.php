@@ -39,6 +39,10 @@ Route::middleware('auth')->group(function () {
      *  Hospitals
      */
     Route::resource('hospitals', 'HospitalController');
+    /*
+     *  Users
+     */
+    Route::resource('users', 'UserController');
 
     /* Settings */
     Route::get('settings', 'SettingController@settings')->name('settings.index');

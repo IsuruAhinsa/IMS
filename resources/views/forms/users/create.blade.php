@@ -1,186 +1,217 @@
-<form class="form-horizontal" action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
+<form class="form-horizontal" action="{{ $route }}" method="POST" enctype="multipart/form-data">
 
     @csrf
 
     <div class="form-group row">
-        <label for="first_name" class="col-sm-2 col-form-label">First Name</label>
-        <div class="col-sm-10">
+        <label for="first_name" class="col-sm-3 col-form-label">First Name</label>
+        <div class="col-sm-9">
             <input
                 type="text"
                 class="form-control rounded-0"
                 id="first_name"
                 placeholder="Enter First Name"
                 name="first_name"
-                value="{{ Auth::user()->first_name }}"
+                value="{{ $firstnameVal }}"
             >
         </div>
     </div>
 
     <div class="form-group row">
-        <label for="last_name" class="col-sm-2 col-form-label">Last Name</label>
-        <div class="col-sm-10">
+        <label for="last_name" class="col-sm-3 col-form-label">Last Name</label>
+        <div class="col-sm-9">
             <input
                 type="text"
                 class="form-control rounded-0"
                 id="last_name"
                 placeholder="Enter Last Name"
                 name="last_name"
-                value="{{ Auth::user()->last_name }}"
+                value="{{ $lastnameVal }}"
             >
         </div>
     </div>
 
+    @if(Request::is('users/*'))
+
+        <div class="form-group row">
+            <label for="password" class="col-sm-3 col-form-label">Password</label>
+            <div class="col-sm-9">
+                <input
+                    type="password"
+                    class="form-control rounded-0"
+                    id="password"
+                    placeholder="Enter Password"
+                    name="password"
+                >
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="password_confirmation" class="col-sm-3 col-form-label">Confirm Password</label>
+            <div class="col-sm-9">
+                <input
+                    type="password"
+                    class="form-control rounded-0"
+                    id="password_confirmation"
+                    placeholder="Re-enter Password"
+                    name="password_confirmation"
+                >
+            </div>
+        </div>
+
+    @endif
+
     <div class="form-group row">
-        <label for="email" class="col-sm-2 col-form-label">Email</label>
-        <div class="col-sm-10">
+        <label for="email" class="col-sm-3 col-form-label">Email</label>
+        <div class="col-sm-9">
             <input
                 type="email"
                 class="form-control rounded-0"
                 id="email"
                 placeholder="Enter Email"
                 name="email"
-                value="{{ Auth::user()->email }}"
+                value="{{ $emailVal }}"
             >
         </div>
     </div>
 
     <div class="form-group row">
-        <label for="phone" class="col-sm-2 col-form-label">Phone</label>
-        <div class="col-sm-10">
+        <label for="phone" class="col-sm-3 col-form-label">Phone</label>
+        <div class="col-sm-9">
             <input
                 type="text"
                 class="form-control rounded-0"
                 id="phone"
                 placeholder="Enter Phone Number"
                 name="phone"
-                value="{{ Auth::user()->phone }}"
+                value="{{ $phoneVal }}"
             >
         </div>
     </div>
 
     <div class="form-group row">
-        <label for="website" class="col-sm-2 col-form-label">Website</label>
-        <div class="col-sm-10">
+        <label for="website" class="col-sm-3 col-form-label">Website</label>
+        <div class="col-sm-9">
             <input
                 type="text"
                 class="form-control rounded-0"
                 id="website"
                 placeholder="Enter Website"
                 name="website"
-                value="{{ Auth::user()->website }}"
+                value="{{ $websiteVal }}"
             >
         </div>
     </div>
 
     <div class="form-group row">
-        <label for="address" class="col-sm-2 col-form-label">Address</label>
-        <div class="col-sm-10">
+        <label for="address" class="col-sm-3 col-form-label">Address</label>
+        <div class="col-sm-9">
             <input
                 type="text"
                 class="form-control rounded-0"
                 id="address"
                 placeholder="Enter Address"
                 name="address"
-                value="{{ Auth::user()->address }}"
+                value="{{ $addressVal }}"
             >
         </div>
     </div>
 
     <div class="form-group row">
-        <label for="city" class="col-sm-2 col-form-label">City</label>
-        <div class="col-sm-10">
+        <label for="city" class="col-sm-3 col-form-label">City</label>
+        <div class="col-sm-9">
             <input
                 type="text"
                 class="form-control rounded-0"
                 id="city"
                 placeholder="Enter City"
                 name="city"
-                value="{{ Auth::user()->city }}"
+                value="{{ $cityVal }}"
             >
         </div>
     </div>
 
     <div class="form-group row">
-        <label for="state" class="col-sm-2 col-form-label">State</label>
-        <div class="col-sm-10">
+        <label for="state" class="col-sm-3 col-form-label">State</label>
+        <div class="col-sm-9">
             <input
                 type="text"
                 class="form-control rounded-0"
                 id="state"
                 placeholder="Enter State"
                 name="state"
-                value="{{ Auth::user()->state }}"
+                value="{{ $stateVal }}"
             >
         </div>
     </div>
 
     <div class="form-group row">
-        <label for="zip" class="col-sm-2 col-form-label">Zip</label>
-        <div class="col-sm-10">
+        <label for="zip" class="col-sm-3 col-form-label">Zip</label>
+        <div class="col-sm-9">
             <input
                 type="text"
                 class="form-control rounded-0"
                 id="zip"
                 placeholder="Enter Zip"
                 name="zip"
-                value="{{ Auth::user()->zip }}"
+                value="{{ $zipVal }}"
             >
         </div>
     </div>
 
     <div class="form-group row">
-        <label for="country" class="col-sm-2 col-form-label">Country</label>
-        <div class="col-sm-10">
+        <label for="country" class="col-sm-3 col-form-label">Country</label>
+        <div class="col-sm-9">
             <input
                 type="text"
                 class="form-control rounded-0"
                 id="country"
                 placeholder="Enter Country"
                 name="country"
-                value="{{ Auth::user()->country }}"
+                value="{{ $countryVal }}"
             >
         </div>
     </div>
 
     <div class="form-group row">
-        <label for="notes" class="col-sm-2 col-form-label">Notes</label>
-        <div class="col-sm-10">
+        <label for="notes" class="col-sm-3 col-form-label">Notes</label>
+        <div class="col-sm-9">
             <textarea
                 class="form-control rounded-0"
                 id="notes"
                 placeholder="Notes"
                 name="notes"
                 rows="5"
-            >{{ Auth::user()->notes }}</textarea>
+            >{{ $notesVal }}</textarea>
         </div>
     </div>
 
     <div class="form-group row">
-        <label for="avatar" class="col-sm-2 col-form-label">Avatar</label>
+        <label for="avatar" class="col-sm-3 col-form-label">Avatar</label>
 
-        @if(!empty(Auth::user()->avatar))
+        @if(Request::is('profile/*') || Request::is('users/*'))
 
-            <div class="col-sm-2">
+            @if(Auth::user()->avatar || $user->avatar)
 
-                <img class="img-thumbnail img-fluid rounded-0" src="{{ asset(Auth::user()->avatar) }}" alt="{{ Auth::user()->avatar }}" width="100%">
+                <div class="col-sm-2">
 
-                <input
-                    type="hidden"
-                    name="current_avatar"
-                    value="{{ Auth::user()->avatar }}"
-                >
+                    <img class="img-thumbnail img-fluid rounded-0" src="{{ asset('uploads/user/avatar/'. $avatarVal) }}" alt="{{ $avatarVal }}" width="100%">
 
-            </div>
+                </div>
+
+            @endif
 
         @endif
 
-        <div class="@if(!empty(Auth::user()->avatar)) col-sm-8 @else col-sm-10 @endif">
+        <div class="@if(Request::is('profile/*') || Request::is('users/*')) @if(Auth::user()->avatar || $user->avatar) col-sm-7 @else col-sm-9 @endif @else col-sm-9 @endif">
             <div class="custom-file">
                 <input
                     type="file"
                     class="custom-file-input rounded-0"
                     id="avatar"
                     name="avatar"
+                    @if($route == route('users.store'))
+                        value="{{ $avatarVal }}"
+                    @endif
                 >
                 <label class="custom-file-label rounded-0" for="customFile">Choose file</label>
                 <small class="form-text text-muted">
@@ -190,18 +221,7 @@
         </div>
     </div>
 
-    <div class="form-group row">
-        <div class="offset-sm-2 col-sm-10 text-right">
-            <a href="{{ url('/') }}" class="btn btn-link">Cancel</a>
-            <button
-                type="submit"
-                class="btn bg-gradient-indigo btn-flat"
-            >
-                <i class="fa fa-save mr-2"></i>
-                Save Profile
-            </button>
-        </div>
-    </div>
+    <x-SubmitButton :btnText="$btnText"></x-SubmitButton>
 
 </form>
 

@@ -27,16 +27,16 @@
         <div class="container-fluid">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-4">
-                    <div class="card card-primary card-outline">
+                    <div class="card card-{{ $commonSetting->skin ? $commonSetting->skin : 'primary' }} card-outline">
                         <div class="card-body box-profile">
                             <div class="text-center">
                                 @if(Auth::user()->avatar)
                                     <img class="profile-user-img img-fluid img-circle"
-                                         src="{{ asset(Auth::user()->avatar) }}"
+                                         src="{{ asset('uploads/user/avatar/' . Auth::user()->avatar) }}"
                                          alt="User profile picture">
                                 @else
                                     <img class="profile-user-img img-fluid img-circle"
-                                         src="{{ asset('img/profile/avatar/default.png') }}"
+                                         src="{{ asset('uploads/user/avatar/default.png') }}"
                                          alt="User profile picture">
                                 @endif
                             </div>

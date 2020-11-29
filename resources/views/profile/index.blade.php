@@ -26,16 +26,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <div class="card card-primary card-outline">
+                    <div class="card card-{{ $commonSetting->skin ? $commonSetting->skin : 'primary' }} card-outline">
                         <div class="card-body box-profile">
                             <div class="text-center">
                                 @if(Auth::user()->avatar)
                                     <img class="profile-user-img img-fluid img-circle"
-                                         src="{{ Auth::user()->avatar }}"
+                                         src="{{ asset('uploads/user/avatar/' . Auth::user()->avatar) }}"
                                          alt="User profile picture">
                                 @else
                                     <img class="profile-user-img img-fluid img-circle"
-                                         src="{{ asset('img/profile/avatar/default.png') }}"
+                                         src="{{ asset('uploads/user/avatar/default.png') }}"
                                          alt="User profile picture">
                                 @endif
                             </div>
@@ -62,12 +62,12 @@
                                 </li>
                             </ul>
 
-                            <a href="{{ route('show.password') }}" class="btn btn-primary btn-block"><b>Change Password</b></a>
+                            <a href="{{ route('show.password') }}" class="btn btn-{{ $commonSetting->skin ? $commonSetting->skin : 'primary' }} btn-block"><b>Change Password</b></a>
                         </div>
 
                     </div>
 
-                    <div class="card card-primary">
+                    <div class="card card-{{ $commonSetting->skin ? $commonSetting->skin : 'primary' }}">
                         <div class="card-header">
                             <h3 class="card-title">About Me</h3>
                         </div>
@@ -109,7 +109,7 @@
                 </div>
                 <div class="col-md-9">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body p-5">
 
                             @if($errors->any())
                                 <x-Alert type="danger" :message="$errors->first()"></x-Alert>
@@ -119,7 +119,23 @@
                                 <x-Alert type="success" :message="session()->get('success')"></x-Alert>
                             @endif
 
-                            @include('forms.profile.index')
+                            @include('forms.users.create', [
+                                "route" => route('profile.update'),
+                                "firstnameVal" => Auth::user()->first_name,
+                                "lastnameVal" => Auth::user()->last_name,
+                                "emailVal" => Auth::user()->email,
+                                "phoneVal" => Auth::user()->phone,
+                                "websiteVal" => Auth::user()->website,
+                                "addressVal" => Auth::user()->address,
+                                "cityVal" => Auth::user()->city,
+                                "stateVal" => Auth::user()->state,
+                                "zipVal" => Auth::user()->zip,
+                                "countryVal" => Auth::user()->country,
+                                "notesVal" => Auth::user()->notes,
+                                "avatarVal" => Auth::user()->avatar,
+                                "btnText" => "Save Profile",
+                            ])
+
                         </div>
                     </div>
                 </div>

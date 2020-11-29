@@ -20,11 +20,11 @@
                 @if(Auth::check())
                     @if(Auth::user()->avatar)
                         <img class="user-image img-circle elevation-2"
-                             src="{{ asset(Auth::user()->avatar) }}"
+                             src="{{ asset('uploads/user/avatar/' . Auth::user()->avatar) }}"
                              alt="User profile picture">
                     @else
                         <img class="user-image img-circle elevation-2"
-                             src="{{ asset('img/profile/avatar/default.png') }}"
+                             src="{{ asset('uploads/user/avatar/default.png') }}"
                              alt="User profile picture">
                     @endif
                 @endif
@@ -44,11 +44,11 @@
                     @if(Auth::check())
                         @if(Auth::user()->avatar)
                             <img class="img-circle elevation-2"
-                                 src="{{ asset(Auth::user()->avatar) }}"
+                                 src="{{ asset('uploads/user/avatar/' . Auth::user()->avatar) }}"
                                  alt="User profile picture">
                         @else
                             <img class="img-circle elevation-2"
-                                 src="{{ asset('img/profile/avatar/default.png') }}"
+                                 src="{{ asset('uploads/user/avatar/default.png') }}"
                                  alt="User profile picture">
                         @endif
                     @endif
@@ -70,7 +70,7 @@
                 <li class="user-body border-bottom-0">
                     <div class="row">
                         <div class="col-4 text-center">
-                            <a href="#">Followers</a>
+                            <a href="{{ route('settings.index') }}">Settings</a>
                         </div>
                         <div class="col-4 text-center">
                             <a href="#">Sales</a>

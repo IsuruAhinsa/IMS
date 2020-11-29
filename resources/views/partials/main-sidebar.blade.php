@@ -19,11 +19,11 @@
                 @if(Auth::check())
                     @if(Auth::user()->avatar)
                         <img class="img-circle elevation-2"
-                             src="{{ asset(Auth::user()->avatar) }}"
+                             src="{{ asset('uploads/user/avatar/' . Auth::user()->avatar) }}"
                              alt="User profile picture">
                     @else
                         <img class="img-circle elevation-2"
-                             src="{{ asset('img/profile/avatar/default.png') }}"
+                             src="{{ asset('uploads/user/avatar/default.png') }}"
                              alt="User profile picture">
                     @endif
                 @endif
@@ -46,13 +46,40 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                 <li class="nav-item">
-                    <a href="{{ url('/') }}" class="nav-link active">
+                    <a href="{{ url('/') }}" class="nav-link {{ Request::is('/') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
                         </p>
                     </a>
-                    <a href="{{ route('settings.index') }}" class="nav-link">
+                </li>
+
+                <li class="nav-item has-treeview {{ Request::is('users/*') || Request::is('users') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ Request::is('users/*') || Request::is('users') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            Users
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('users.index') }}" class="nav-link {{ Request::is('users') ? 'active' : '' }}">
+                                <i class="fas fa-user-friends nav-icon"></i>
+                                <p>All Users</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('users.create') }}" class="nav-link {{ Request::is('users/create') ? 'active' : '' }}">
+                                <i class="fas fa-user-plus nav-icon"></i>
+                                <p>Create User</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('settings.index') }}" class="nav-link {{ Request::is('settings') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-cog"></i>
                         <p>
                             Settings

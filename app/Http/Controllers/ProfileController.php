@@ -18,39 +18,22 @@ class ProfileController extends Controller
 
     public function update(UpdateProfile $request)
     {
-        if ($request->hasFile('avatar')) {
-            $avatar = $request->file('avatar');
-            if ($avatar->isValid()) {
-                // getting original extension for avatar
-                $extension = $avatar->getClientOriginalExtension();
-                // creating filename for avatar
-                $filename = date("Y_m_d_h_i_s") . "_" . $request->email . "." . $extension;
-                // creating avatar path
-                $path = 'img/profile/avatar/uploads/' . $filename;
-                // resize avatar and saved
-                Image::make($avatar)->resize(128, 128)->save($path);
-            }
-        } elseif($request->current_avatar) {
-            $path = $request->input('current_avatar');
-        } else {
-            $path = 'img/profile/avatar/default.png';
-        }
+        $user = User::findOrFail(Auth::id());
 
-        // update profile data
-        User::where('id', Auth::id())->update([
-            'first_name' => $request->input('first_name'),
-            'last_name' => $request->input('last_name'),
-            'email' => $request->input('email'),
-            'avatar' => $path,
-            'phone' => $request->input('phone'),
-            'website' => $request->input('website'),
-            'address' => $request->input('address'),
-            'city' => $request->input('city'),
-            'state' => $request->input('state'),
-            'zip' => $request->input('zip'),
-            'country' => $request->input('country'),
-            'notes' => $request->input('notes'),
-        ]);
+        app('App\Http\Requests\ImageUploadRequest')->handleImages($user, 128, 'avatar', 'user/avatar/', 'avatar');
+
+        $user->first_name   = $request->input('first_name');
+        $user->last_name    = $request->input('last_name');
+        $user->email        = $request->input('email');
+        $user->phone        = $request->input('phone');
+        $user->website      = $request->input('website');
+        $user->address      = $request->input('address');
+        $user->city         = $request->input('city');
+        $user->state        = $request->input('state');
+        $user->zip          = $request->input('zip');
+        $user->country      = $request->input('country');
+        $user->notes        = $request->input('notes');
+        $user->save();
 
         // return redirect to back with success message
         return back()->with('success', 'Your Profile has been updated!');

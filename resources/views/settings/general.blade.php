@@ -60,17 +60,6 @@
         </div>
     </div>
 
-    <div class="form-group row">
-        <div class="offset-sm-2 col-sm-10 text-right">
-            <a href="{{ url('/') }}" class="btn btn-link">Cancel</a>
-            <button
-                type="submit"
-                class="btn bg-gradient-dark btn-flat"
-            >
-                <i class="fa fa-save mr-2"></i>
-                Save Branding Settings
-            </button>
-        </div>
-    </div>
+    <x-SubmitButton :btnText="'Save General Settings'"></x-SubmitButton>
 
 </form>

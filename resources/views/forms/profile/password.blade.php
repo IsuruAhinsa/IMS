@@ -30,8 +30,5 @@
             name="password_confirmation"
         >
     </div>
-    <div class="text-center">
-        <a href="{{ url('/') }}" class="btn btn-link">Cancel</a>
-        <button type="submit" class="btn btn-primary">Change Password</button>
-    </div>
+    <x-SubmitButton :btnText="'Change Password'"></x-SubmitButton>
 </form>
