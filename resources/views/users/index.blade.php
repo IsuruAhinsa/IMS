@@ -34,7 +34,7 @@
                             <table id="example" class="table table-sm table-hover table-borderless" style="width:100%">
                                 <thead>
                                 <tr>
-                                    <th>Avatar</th>
+                                    <th>image</th>
                                     <th>First Name</th>
                                     <th>Last Name</th>
                                     <th>Email</th>
@@ -49,7 +49,7 @@
                                     @foreach(\App\User::all() as $user)
                                         <tr>
                                             <td>
-                                                <img src="{{ asset('uploads/user/avatar/' . $user->avatar) }}" alt="" class="img-fluid" width="32">
+                                                <img src="{{ asset('uploads/user/image/' . $user->image) }}" alt="" class="img-fluid" width="32">
                                             </td>
                                             <td>{{ $user->first_name }}</td>
                                             <td>{{ $user->last_name}}</td>

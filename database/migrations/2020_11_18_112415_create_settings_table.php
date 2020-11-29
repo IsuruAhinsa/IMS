@@ -15,7 +15,7 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('site_name', 100)->default("IMS");
             $table->string('logo')->nullable()->default(null);
             $table->char('favicon')->nullable()->default(null);

@@ -52,7 +52,7 @@ class UserController extends Controller
         $user->notes = $request->input('notes', null);
 
         // we have to invoke the
-        app('App\Http\Requests\ImageUploadRequest')->handleImages($user, 600, 'avatar', 'user/avatar/', 'avatar');
+        app('App\Http\Requests\ImageUploadRequest')->handleImages($user, 600, 'image', 'user/image/', 'image');
 
         $user->save();
         return back()->with('success', 'User was successfully created!');

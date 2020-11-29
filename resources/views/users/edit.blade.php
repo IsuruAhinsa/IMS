@@ -45,7 +45,7 @@
                                "zipVal" => $user->zip,
                                "countryVal" => $user->country,
                                "notesVal" => $user->notes,
-                               "avatarVal" => $user->avatar,
+                               "imageVal" => $user->image,
                                "btnText" => "Update User",
                            ])
 

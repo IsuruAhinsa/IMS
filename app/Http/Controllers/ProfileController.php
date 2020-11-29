@@ -20,7 +20,7 @@ class ProfileController extends Controller
     {
         $user = User::findOrFail(Auth::id());
 
-        app('App\Http\Requests\ImageUploadRequest')->handleImages($user, 128, 'avatar', 'user/avatar/', 'avatar');
+        app('App\Http\Requests\ImageUploadRequest')->handleImages($user, 128, 'image', 'user/image/', 'image');
 
         $user->first_name   = $request->input('first_name');
         $user->last_name    = $request->input('last_name');

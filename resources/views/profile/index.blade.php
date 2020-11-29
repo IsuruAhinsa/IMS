@@ -29,14 +29,10 @@
                     <div class="card card-{{ $commonSetting ? $commonSetting->skin : 'primary' }} card-outline">
                         <div class="card-body box-profile">
                             <div class="text-center">
-                                @if(Auth::user()->avatar)
+                                @if(Auth::user()->image)
                                     <img class="profile-user-img img-fluid img-circle"
-                                         src="{{ asset('uploads/user/avatar/' . Auth::user()->avatar) }}"
-                                         alt="User profile picture">
-                                @else
-                                    <img class="profile-user-img img-fluid img-circle"
-                                         src="{{ asset('uploads/user/avatar/default.png') }}"
-                                         alt="User profile picture">
+                                         src="{{ asset('uploads/user/image/' . Auth::user()->image) }}"
+                                         alt="{{ Auth::user()->image }}">
                                 @endif
                             </div>
 
@@ -132,7 +128,7 @@
                                 "zipVal" => Auth::user()->zip,
                                 "countryVal" => Auth::user()->country,
                                 "notesVal" => Auth::user()->notes,
-                                "avatarVal" => Auth::user()->avatar,
+                                "imageVal" => Auth::user()->image,
                                 "btnText" => "Save Profile",
                             ])
 

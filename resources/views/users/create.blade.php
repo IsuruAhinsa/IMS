@@ -45,7 +45,7 @@
                                "zipVal" => old('zip'),
                                "countryVal" => old('country'),
                                "notesVal" => old('notes'),
-                               "avatarVal" => old('avatar'),
+                               "imageVal" => old('image'),
                                "btnText" => "Create User",
                            ])
 

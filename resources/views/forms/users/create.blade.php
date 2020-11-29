@@ -186,15 +186,15 @@
     </div>
 
     <div class="form-group row">
-        <label for="avatar" class="col-sm-3 col-form-label">Avatar</label>
+        <label for="image" class="col-sm-3 col-form-label">image</label>
 
         @if(Route::currentRouteName() == 'profile' || Route::currentRouteName() == 'users.edit')
 
-            @if(Auth::user()->avatar || isset($user->avatar))
+            @if(Auth::user()->image || isset($user->image))
 
                 <div class="col-sm-2">
 
-                    <img class="img-thumbnail img-fluid rounded-0" src="{{ asset('uploads/user/avatar/'. $avatarVal) }}" alt="{{ $avatarVal }}" width="100%">
+                    <img class="img-thumbnail img-fluid rounded-0" src="{{ asset('uploads/user/image/'. $imageVal) }}" alt="{{ $imageVal }}" width="100%">
 
                 </div>
 
@@ -202,15 +202,15 @@
 
         @endif
 
-        <div class="@if(Route::currentRouteName() == 'profile' || Route::currentRouteName() == 'users.edit') @if(Auth::user()->avatar || isset($user->avatar)) col-sm-7 @else col-sm-9 @endif @else col-sm-9 @endif">
+        <div class="@if(Route::currentRouteName() == 'profile' || Route::currentRouteName() == 'users.edit') @if(Auth::user()->image || isset($user->image)) col-sm-7 @else col-sm-9 @endif @else col-sm-9 @endif">
             <div class="custom-file">
                 <input
                     type="file"
                     class="custom-file-input rounded-0"
-                    id="avatar"
-                    name="avatar"
+                    id="image"
+                    name="image"
                     @if($route == route('users.store'))
-                        value="{{ $avatarVal }}"
+                        value="{{ $imageVal }}"
                     @endif
                 >
                 <label class="custom-file-label rounded-0" for="customFile">Choose file</label>

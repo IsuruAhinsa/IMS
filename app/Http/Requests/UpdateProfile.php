@@ -43,7 +43,7 @@ class UpdateProfile extends FormRequest
             'zip' => ['nullable', 'string', 'max:100'],
             'country' => ['nullable', 'string', 'max:100'],
             'notes' => ['nullable', 'string', 'max:100'],
-            'avatar' => ['image', 'mimes:jpeg,png,jpg,gif,svg'],
+            'image' => ['image', 'mimes:jpeg,png,jpg,gif,svg'],
         ];
     }
 }

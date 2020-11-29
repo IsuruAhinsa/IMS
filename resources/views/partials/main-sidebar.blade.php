@@ -17,14 +17,10 @@
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
                 @if(Auth::check())
-                    @if(Auth::user()->avatar)
+                    @if(Auth::user()->image)
                         <img class="img-circle elevation-2"
-                             src="{{ asset('uploads/user/avatar/' . Auth::user()->avatar) }}"
-                             alt="User profile picture">
-                    @else
-                        <img class="img-circle elevation-2"
-                             src="{{ asset('uploads/user/avatar/default.png') }}"
-                             alt="User profile picture">
+                             src="{{ asset('uploads/user/image/' . Auth::user()->image) }}"
+                             alt="{{ Auth::user()->image }}">
                     @endif
                 @endif
             </div>

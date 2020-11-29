@@ -18,14 +18,10 @@
         <li class="nav-item dropdown user-menu">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
                 @if(Auth::check())
-                    @if(Auth::user()->avatar)
+                    @if(Auth::user()->image)
                         <img class="user-image img-circle elevation-2"
-                             src="{{ asset('uploads/user/avatar/' . Auth::user()->avatar) }}"
-                             alt="User profile picture">
-                    @else
-                        <img class="user-image img-circle elevation-2"
-                             src="{{ asset('uploads/user/avatar/default.png') }}"
-                             alt="User profile picture">
+                             src="{{ asset('uploads/user/image/' . Auth::user()->image) }}"
+                             alt="{{ Auth::user()->image }}">
                     @endif
                 @endif
                 <span class="d-none d-md-inline">
@@ -42,14 +38,10 @@
                 <!-- User image -->
                 <li class="user-header bg-{{ $commonSetting ? $commonSetting->skin : 'primary' }}">
                     @if(Auth::check())
-                        @if(Auth::user()->avatar)
+                        @if(Auth::user()->image)
                             <img class="img-circle elevation-2"
-                                 src="{{ asset('uploads/user/avatar/' . Auth::user()->avatar) }}"
-                                 alt="User profile picture">
-                        @else
-                            <img class="img-circle elevation-2"
-                                 src="{{ asset('uploads/user/avatar/default.png') }}"
-                                 alt="User profile picture">
+                                 src="{{ asset('uploads/user/image/' . Auth::user()->image) }}"
+                                 alt="{{ Auth::user()->image }}">
                         @endif
                     @endif
                     <p>
@@ -109,7 +101,7 @@
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                        <img src="{{ asset('img/user1-128x128.jpg') }}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                        <img src="{{ asset('img/user1-128x128.jpg') }}" alt="User image" class="img-size-50 mr-3 img-circle">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
                                 Brad Diesel
@@ -125,7 +117,7 @@
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                        <img src="{{ asset('img/user8-128x128.jpg') }}" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                        <img src="{{ asset('img/user8-128x128.jpg') }}" alt="User image" class="img-size-50 img-circle mr-3">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
                                 John Pierce
@@ -141,7 +133,7 @@
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                        <img src="{{ asset('img/user3-128x128.jpg') }}" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                        <img src="{{ asset('img/user3-128x128.jpg') }}" alt="User image" class="img-size-50 img-circle mr-3">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
                                 Nora Silvester
