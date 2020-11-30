@@ -23,17 +23,13 @@
 
     <div class="form-group row">
         <label for="logo" class="col-sm-2 col-form-label">Logo</label>
-
         @if($setting->logo)
-
             <div class="col-sm-2">
 
                 <img class="img-thumbnail img-fluid rounded-0" src="{{ asset('uploads/settings/'.$setting->logo) }}" alt="{{ $setting->logo }}" width="100%">
 
             </div>
-
         @endif
-
         <div class="@if(!empty($setting->logo)) col-sm-8 @else col-sm-10 @endif">
             <div class="custom-file">
                 <input

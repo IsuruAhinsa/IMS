@@ -3,7 +3,7 @@
     <a href="{{ url('/') }}" class="brand-link">
         @if (isset($commonSetting))
             <img
-                src="{{ asset('uploads/settings/'.$commonSetting->logo) }}"
+                src="{{ $commonSetting->logo ? asset('uploads/settings/'.$commonSetting->logo) : asset('img/logo.png') }}"
                 alt="{{ $commonSetting->site_name }} logo" class="brand-image img-circle elevation-3"
                 style="opacity: .8">
         @endif
