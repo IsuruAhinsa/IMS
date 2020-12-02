@@ -43,6 +43,10 @@ Route::middleware('auth')->group(function () {
      *  Users
      */
     Route::resource('users', 'UserController');
+    // user force delete
+    Route::get('users/force-delete/{id}', 'UserController@forceDelete')->name('users.fdelete');
+    // user restore
+    Route::get('users/restore/{id}', 'UserController@restore')->name('users.restore');
 
     /* Settings */
     Route::get('settings', 'SettingController@settings')->name('settings.index');

@@ -10,10 +10,10 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>
+                    <h4>
                         <i class="fas fa-user-plus mr-2"></i>
                         Create User
-                    </h1>
+                    </h4>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -28,7 +28,7 @@
     <section class="content">
         <div class="container">
             <div class="row d-flex justify-content-center">
-                <div class="col-md-10">
+                <div class="col-md-9">
                     <div class="card card-{{ $commonSetting ? $commonSetting->skin : 'primary' }} card-outline">
                         <div class="card-body p-5">
 

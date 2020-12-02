@@ -1,6 +1,9 @@
 <form class="form-horizontal" action="{{ $route }}" method="POST" enctype="multipart/form-data">
 
     @csrf
+    @if(Route::currentRouteName() == 'users.edit')
+        @method('PUT')
+    @endif
 
     <div class="form-group row">
         <label for="first_name" class="col-sm-3 col-form-label">First Name</label>
@@ -186,7 +189,7 @@
     </div>
 
     <div class="form-group row">
-        <label for="image" class="col-sm-3 col-form-label">image</label>
+        <label for="image" class="col-sm-3 col-form-label">Image</label>
 
         @if(Route::currentRouteName() == 'profile' || Route::currentRouteName() == 'users.edit')
 

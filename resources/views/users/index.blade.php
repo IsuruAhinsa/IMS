@@ -10,10 +10,10 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>
+                    <h4>
                         <i class="fas fa-user-friends mr-2"></i>
                         Users
-                    </h1>
+                    </h4>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -29,24 +29,71 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
+
                     <div class="card card-{{ $commonSetting ? $commonSetting->skin : 'primary' }} card-outline">
                         <div class="card-body">
+
+                            <div class="text-right mb-2">
+
+                                <x-OptionButtonGroup
+                                    btnText1="Show Current Users"
+                                    btnText2="Show Deleted Users"
+                                    btnText3="Create User"
+                                ></x-OptionButtonGroup>
+
+                            </div>
+
+                            @if(session()->has('success'))
+                                <x-Alert type="success" :message="session()->get('success')"></x-Alert>
+                            @endif
+
+                            @if($errors->any())
+                                <x-Alert type="danger" :message="$errors->first()"></x-Alert>
+                            @endif
+
                             <table id="example" class="table table-sm table-hover table-borderless" style="width:100%">
                                 <thead>
                                 <tr>
-                                    <th>image</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Email</th>
-                                    <th>Phone</th>
-                                    <th>Website</th>
-                                    <th>Address</th>
-                                    <th>Created At</th>
-                                    <th>Action</th>
+                                    <th>
+                                        <i class="fas fa-image text-primary mr-2"></i>
+                                        Image
+                                    </th>
+                                    <th>
+                                        <i class="far fa-user-circle text-primary mr-2"></i>
+                                        First Name
+                                    </th>
+                                    <th>
+                                        <i class="far fa-user-circle text-primary mr-2"></i>
+                                        Last Name
+                                    </th>
+                                    <th>
+                                        <i class="far fa-envelope text-primary mr-2"></i>
+                                        Email
+                                    </th>
+                                    <th>
+                                        <i class="fas fa-mobile-alt text-primary mr-2"></i>
+                                        Phone
+                                    </th>
+                                    <th>
+                                        <i class="fab fa-internet-explorer text-primary mr-2"></i>
+                                        Website
+                                    </th>
+                                    <th>
+                                        <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
+                                        Address
+                                    </th>
+                                    <th>
+                                        <i class="far fa-clock text-primary mr-2"></i>
+                                        Registered At
+                                    </th>
+                                    <th class="text-center">
+                                        <i class="fas fa-ellipsis-v text-primary mr-2"></i>
+                                        Action
+                                    </th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach(\App\User::all() as $user)
+                                    @foreach($users as $user)
                                         <tr>
                                             <td>
                                                 <img src="{{ asset('uploads/user/image/' . $user->image) }}" alt="" class="img-fluid" width="32">
@@ -57,19 +104,16 @@
                                             <td>{{ $user->phone }}</td>
                                             <td>{{ $user->website }}</td>
                                             <td>{{ $user->address }}</td>
-                                            <td>{{ $user->created_at }}</td>
-                                            <th>
-                                                <div class="btn-group">
-                                                    <button type="button" class="btn" data-toggle="dropdown">
-                                                        <i class="fas fa-ellipsis-v text-danger"></i>
-                                                    </button>
-                                                    <div class="dropdown-menu dropdown-menu-right border-0" role="menu">
-                                                        <a href="{{ route('users.show', [$user->id]) }}" class="dropdown-item"><i class="far fa-eye mr-2"></i> View</a>
-                                                        <a href="{{ route('users.edit', [$user->id]) }}" class="dropdown-item"><i class="far fa-edit mr-2"></i> Edit</a>
-                                                        <a href="{{ route('users.destroy', [$user->id]) }}" class="dropdown-item text-danger"><i class="far fa-trash-alt mr-2"></i> Delete</a>
-                                                    </div>
-                                                </div>
-                                            </th>
+                                            <td>{{ $user->created_at->toDayDateTimeString() }}</td>
+                                            <td class="text-center">
+                                                <x-ActionButtonGroup
+                                                    :viewRoute="route('users.show', $user->id)"
+                                                    :editRoute="route('users.edit', $user->id)"
+                                                    :deleteRoute="route('users.destroy', $user->id)"
+                                                    :forceDeleteRoute="route('users.fdelete', $user->id)"
+                                                    :restoreRoute="route('users.restore', $user->id)"
+                                                ></x-ActionButtonGroup>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
