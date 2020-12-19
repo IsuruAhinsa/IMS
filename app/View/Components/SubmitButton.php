@@ -7,16 +7,18 @@ use Illuminate\View\Component;
 class SubmitButton extends Component
 {
     public $btnText;
+    public $cancelBtnRoute;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($btnText)
+    public function __construct($btnText, $cancelBtnRoute)
     {
         //
         $this->btnText = $btnText;
+        $this->cancelBtnRoute = $cancelBtnRoute;
     }
 
     /**

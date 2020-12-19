@@ -6,7 +6,7 @@ use App\Hospital;
 use App\Http\Requests\StoreHospital;
 use Illuminate\Http\Request;
 
-class HospitalController extends Controller
+final class HospitalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,8 @@ class HospitalController extends Controller
      */
     public function index()
     {
-        //
+        $hospitals = Hospital::all();
+        return view('hospitals.index')->with(compact('hospitals'));
     }
 
     /**
@@ -34,8 +35,7 @@ class HospitalController extends Controller
      */
     public function store(StoreHospital $request)
     {
-        Hospital::create($request->all());
-        return back()->with('success', 'Hospital Created!');
+
     }
 
     /**

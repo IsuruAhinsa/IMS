@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUserRequest;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -30,7 +32,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        $roles = Role::all();
+        return view('users.create')->with(compact('roles'));
     }
 
     /**
@@ -39,7 +42,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      *
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
         $user = new User();
         // email and password need to be handled specially because the need to respect config values on an edit.
@@ -62,6 +65,12 @@ class UserController extends Controller
         app('App\Http\Requests\ImageUploadRequest')->handleImages($user, 600, 'image', 'user/image/', 'image');
 
         $user->save();
+
+        // assign multiple roles for user
+        if ($request->input('roles')) {
+            $user->assignRole($request->input('roles'));
+        }
+
         return redirect()->route('users.index')->with('success', 'User was successfully created!');
     }
 
@@ -83,7 +92,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('users.edit')->with(compact('user'));
+        $roles = Role::all();
+        return view('users.edit')->with(compact('user', 'roles'));
     }
 
     /**
@@ -92,7 +102,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\User  $user
      */
-    public function update(Request $request, User $user)
+    public function update(StoreUserRequest $request, User $user)
     {
         // update user
         $user->email = e($request->input('email'));
@@ -114,6 +124,13 @@ class UserController extends Controller
         app('App\Http\Requests\ImageUploadRequest')->handleImages($user, 600, 'image', 'user/image/', 'image');
 
         $user->save();
+
+        $user->roles()->detach();
+        // assign multiple roles for user
+        if ($request->input('roles')) {
+            $user->assignRole($request->input('roles'));
+        }
+
         return redirect()->route('users.index')->with('success', 'User was successfully updated!');
     }
 
@@ -159,13 +176,17 @@ class UserController extends Controller
     {
         // get user information
         $user = User::onlyTrashed()->findOrFail($id);
-
+        // remove roles from user
+        $user->roles()->detach();
         // delete user
         User::withTrashed()->where('id', $user->id)->forceDelete();
 
         // delete user image if it is exists
         if(Storage::disk('public')->exists('user/image/' . $user->image)) {
-            Storage::disk('public')->delete('user/image/' . $user->image);
+            // prevent the default image removal
+            if ($user->image != 'default.png') {
+                Storage::disk('public')->delete('user/image/' . $user->image);
+            }
         }
 
         return redirect()->route('users.index', ['status' => 'deleted'])->with('success', 'User was successfully permanently deleted!');

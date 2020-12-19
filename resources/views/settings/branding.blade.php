@@ -12,7 +12,7 @@
         <div class="col-sm-10">
             <input
                 type="text"
-                class="form-control rounded-0"
+                class="form-control form-control-sm rounded-0"
                 id="site_name"
                 placeholder="{{ $setting ? $setting->site_name : null }}"
                 name="site_name"
@@ -133,7 +133,7 @@
         <div class="col-sm-10">
             <input
                 type="text"
-                class="form-control rounded-0"
+                class="form-control form-control-sm rounded-0"
                 id="footer_text"
                 placeholder="{{ isset($setting) ? $setting->footer_text : null }}"
                 name="footer_text"
@@ -145,7 +145,7 @@
         </div>
     </div>
 
-    <x-SubmitButton :btnText="'Save Branding Settings'"></x-SubmitButton>
+    <x-SubmitButton :btnText="'Save Branding Settings'" :cancelBtnRoute="url('/')"></x-SubmitButton>
 
 </form>
 

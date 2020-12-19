@@ -60,6 +60,6 @@
         </div>
     </div>
 
-    <x-SubmitButton :btnText="'Save General Settings'"></x-SubmitButton>
+    <x-SubmitButton :btnText="'Save General Settings'" :cancelBtnRoute="url('/')"></x-SubmitButton>
 
 </form>

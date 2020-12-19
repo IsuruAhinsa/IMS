@@ -23,9 +23,7 @@
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
-            <div class="row">
-
-            </div>
+            @include('partials.dashboard.info-box')
         </div>
     </div>
 

@@ -17,7 +17,8 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ url('/') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('users.index') }}">Users</a></li>
                         <li class="breadcrumb-item active">View User</li>
                     </ol>
                 </div>
@@ -36,7 +37,12 @@
                     <div class="card bg-light card-{{ $commonSetting ? $commonSetting->skin : 'primary' }} card-outline">
 
                         <div class="card-header text-muted border-bottom-0">
-                            Administrator
+                            @foreach($user->roles as $role)
+                                <span class="badge bg-{{ $commonSetting ? $commonSetting->skin : 'primary' }}">
+                                    <i class="fa fa-user-shield mr-2"></i>
+                                    {{ $role->name }}
+                                </span>
+                            @endforeach
                         </div>
 
                         <div class="card-body pt-0">
@@ -48,13 +54,13 @@
                                     @if($user->first_name && $user->last_name)
                                         <h2 class="lead">
                                             <i class="far fa-user-circle mr-2"></i>
-                                            <b>{{ $user->first_name . " " . $user->last_name }}</b> <br>
+                                            <b>{{ $user->getFullName() }}</b> <br>
                                         </h2>
                                     @endif
 
                                     <p class="text-muted text-sm">
                                         <b>Registered At: </b>
-                                        {{ $user->created_at }}
+                                        {{ $user->created_at->toDateString() }}
                                     </p>
 
                                     <ul class="ml-4 mb-0 fa-ul text-muted">
@@ -77,12 +83,12 @@
                                             </li>
                                         @endif
 
-                                        @if($user->address && $user->city && $user->state && $user->zip && $user->country)
+                                        @if($user->address)
                                             <li>
                                                 <span class="fa-li">
                                                     <i class="fas fa-map-marker-alt mr-2"></i>
                                                 </span>
-                                                {{ $user->address . ", " . $user->city . ", " . $user->state . ", " . $user->zip . ", " . $user->country  }}
+                                                {{ $user->getFullAddress() }}
                                             </li>
                                         @endif
 

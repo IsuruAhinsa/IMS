@@ -39,7 +39,7 @@
         <div class="col-sm-10">
             <input
                 type="text"
-                class="form-control rounded-0 w-25"
+                class="form-control form-control-sm rounded-0 w-25"
                 id="currency"
                 placeholder="{{ $setting ? $setting->currency : null }}"
                 name="currency"
@@ -48,6 +48,6 @@
         </div>
     </div>
 
-    <x-SubmitButton :btnText="'Save Localization Settings'"></x-SubmitButton>
+    <x-SubmitButton :btnText="'Save Localization Settings'" :cancelBtnRoute="url('/')"></x-SubmitButton>
 
 </form>

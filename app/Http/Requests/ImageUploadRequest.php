@@ -28,11 +28,14 @@ class ImageUploadRequest extends FormRequest
     public function rules()
     {
         return [
-            'logo' => 'mimes:png,gif,jpg,jpeg,svg,bmp,svg+xml',
-            'email_logo' => 'mimes:png,gif,jpg,jpeg,svg,bmp,svg+xml',
-            'favicon' => 'mimes:png,gif,jpg,jpeg,svg,bmp,svg+xml,ico',
+            'image' => 'mimes:png,gif,jpg,jpeg,svg,bmp,svg+xml',
         ];
     }
+
+    /*public function response(array $errors)
+    {
+        return $this->redirector->back()->withInput()->withErrors($errors, $this->errorBag);
+    }*/
 
     /**
      * Handle and store any images attached to request

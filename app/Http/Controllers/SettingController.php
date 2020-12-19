@@ -10,8 +10,22 @@ use Illuminate\Support\Facades\Storage;
 
 class SettingController extends Controller
 {
+    public $user;
+
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->user = Auth::user();
+            return $next($request);
+        });
+    }
+
     public function settings()
     {
+        if (is_null($this->user) || !$this->user->can('settings.view')) {
+            abort(403, 'Sorry !! You are Unauthorized access !');
+        }
+
         $setting = Setting::getSettings();
         return view('settings.index')->with(compact('setting'));
     }

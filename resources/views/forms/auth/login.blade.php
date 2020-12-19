@@ -3,7 +3,7 @@
     <div class="input-group mb-3">
         <input
             type="email"
-            class="form-control @error('email') is-invalid @enderror"
+            class="form-control form-control-sm @error('email') is-invalid @enderror"
             placeholder="Email"
             name="email"
             value="{{ old('email') }}"
@@ -26,7 +26,7 @@
     <div class="input-group mb-3">
         <input
             type="password"
-            class="form-control @error('password') is-invalid @enderror"
+            class="form-control form-control-sm @error('password') is-invalid @enderror"
             placeholder="Password"
             name="password"
             required

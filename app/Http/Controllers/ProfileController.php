@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Image;
+use Spatie\Permission\Models\Role;
 
 class ProfileController extends Controller
 {

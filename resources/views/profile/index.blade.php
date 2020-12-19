@@ -26,7 +26,7 @@
     </section>
 
     <section class="content">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-3">
                     <div class="card card-{{ $commonSetting ? $commonSetting->skin : 'primary' }} card-outline">

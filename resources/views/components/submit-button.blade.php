@@ -1,6 +1,6 @@
 <div class="form-group row">
     <div class="offset-sm-2 col-sm-10 text-right">
-        <a href="{{ url('/') }}" class="btn btn-link">Cancel</a>
+        <a href="{{ $cancelBtnRoute }}" class="btn btn-link">Cancel</a>
         <button
             type="submit"
             class="btn bg-gradient-{{ $commonSetting ? $commonSetting->skin : 'primary' }} btn-flat"
