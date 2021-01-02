@@ -109,18 +109,18 @@
                                 <tbody>
                                 @foreach($manufacturers as $manufacturer)
                                     <tr>
-                                        <td>{{ $manufacturer->manufacturer_id }}</td>
-                                        <td>{{ $manufacturer->manufacturer_code }}</td>
-                                        <td>{{ $manufacturer->manufacturer_name }}</td>
-                                        <td>{{ $manufacturer->contact_person  }}</td>
-                                        <td>{{ $manufacturer->address  }}</td>
-                                        <td>{{ $manufacturer->city  }}</td>
-                                        <td>{{ $manufacturer->state_or_province  }}</td>
-                                        <td>{{ $manufacturer->postal_code }}</td>
-                                        <td>{{ $manufacturer->country }}</td>
-                                        <td>{{ $manufacturer->phone_number }}</td>
-                                        <td>{{ $manufacturer->fax_number }}</td>
-                                        <td>{{ $manufacturer->email }}</td>
+                                        <td>{{ $manufacturer->manufacturer_id ? $manufacturer->manufacturer_id : '-' }}</td>
+                                        <td>{{ $manufacturer->manufacturer_code ? $manufacturer->manufacturer_code : '-' }}</td>
+                                        <td>{{ $manufacturer->manufacturer_name ? $manufacturer->manufacturer_name : '-' }}</td>
+                                        <td>{{ $manufacturer->contact_person ? $manufacturer->contact_person : '-'  }}</td>
+                                        <td>{{ $manufacturer->address ? $manufacturer->address : '-'  }}</td>
+                                        <td>{{ $manufacturer->city ? $manufacturer->city : '-'  }}</td>
+                                        <td>{{ $manufacturer->state_or_province ? $manufacturer->state_or_province : '-'  }}</td>
+                                        <td>{{ $manufacturer->postal_code ? $manufacturer->postal_code : '-' }}</td>
+                                        <td>{{ $manufacturer->country ? $manufacturer->country : '-' }}</td>
+                                        <td>{{ $manufacturer->phone_number ? $manufacturer->phone_number : '-' }}</td>
+                                        <td>{{ $manufacturer->fax_number ? $manufacturer->fax_number : '-' }}</td>
+                                        <td>{{ $manufacturer->email ? $manufacturer->email : '-' }}</td>
                                         <td class="text-center">
 
                                             <x-ActionButtonGroup

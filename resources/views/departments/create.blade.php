@@ -43,7 +43,10 @@
                                 <x-Alert type="danger" :message="$errors->first()"></x-Alert>
                             @endif
 
-                            @include('forms.departments.create')
+                            @include('forms.departments.create', [
+                                'route' => route('departments.store'),
+                                'btnText' => 'Create Department',
+                            ])
 
                         </div>
                     </div>

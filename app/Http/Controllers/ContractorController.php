@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contractor;
+use App\Http\Requests\SaveContractorRequest;
 use Illuminate\Http\Request;
 
 class ContractorController extends Controller
@@ -13,7 +14,11 @@ class ContractorController extends Controller
      */
     public function index()
     {
-        $contractors = Contractor::all();
+        if (request()->status == 'deleted') {
+            $contractors = Contractor::onlyTrashed()->get();
+        } else {
+            $contractors = Contractor::all();
+        }
         return view('contractors.index')->with(compact('contractors'));
     }
 
@@ -23,62 +28,86 @@ class ContractorController extends Controller
      */
     public function create()
     {
-        return view('contractors.create');
+        return view('contractors.create')->with('contractor', new Contractor);
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SaveContractorRequest $request)
     {
-        //
+        $contractor = new Contractor;
+        $contractor->reference_id = $request->input('reference_id');
+        $contractor->reference_code = $request->input('reference_code');
+        $contractor->contract_status = $request->input('contract_status');
+        $contractor->contractor_no = $request->input('contractor_no');
+        $contractor->contractor_name = $request->input('contractor_name');
+        $contractor->start_date = $request->input('start_date');
+        $contractor->end_date = $request->input('end_date');
+        $contractor->type = $request->input('type');
+        $contractor->contractor_value = $request->input('contractor_value');
+        $contractor->save();
+
+        return redirect()->route('contractors.index')->with('success', 'Contractor created successfully.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Contractor  $contractor
-     * @return \Illuminate\Http\Response
      */
     public function show(Contractor $contractor)
     {
-        //
+        return view('contractors.view')->with('contractor', $contractor);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Contractor  $contractor
-     * @return \Illuminate\Http\Response
      */
     public function edit(Contractor $contractor)
     {
-        //
+        return view('contractors.edit')->with('contractor', $contractor);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Contractor  $contractor
-     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contractor $contractor)
+    public function update(SaveContractorRequest $request, Contractor $contractor)
     {
-        //
+        $contractor->reference_id = $request->input('reference_id');
+        $contractor->reference_code = $request->input('reference_code');
+        $contractor->contract_status = $request->input('contract_status');
+        $contractor->contractor_no = $request->input('contractor_no');
+        $contractor->contractor_name = $request->input('contractor_name');
+        $contractor->start_date = $request->input('start_date');
+        $contractor->end_date = $request->input('end_date');
+        $contractor->type = $request->input('type');
+        $contractor->contractor_value = $request->input('contractor_value');
+        $contractor->save();
+
+        return redirect()->route('contractors.index')->with('success', 'Contractor updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Contractor  $contractor
-     * @return \Illuminate\Http\Response
      */
     public function destroy(Contractor $contractor)
     {
-        //
+        $contractor->delete();
+        return back()->with('success', 'The Contractor was deleted successfully.');
+    }
+
+    public function restore($reference_id = null)
+    {
+        Contractor::onlyTrashed()->where('reference_id', $reference_id)->restore();
+        return redirect()->route('contractors.index')->with('success', 'Contractor restored successfully.');
+    }
+
+    public function fdelete($reference_id = null)
+    {
+        Contractor::onlyTrashed()->where('reference_id', $reference_id)->forceDelete();
+        return back()->with('success', 'The Contractor was permanently deleted successfully.');
     }
 }

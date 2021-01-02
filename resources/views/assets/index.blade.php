@@ -3,6 +3,18 @@
 {{-- page title --}}
 @section('title', 'Assets')
 
+@push('css')
+
+    <style>
+
+        .table > tbody > tr > td {
+            vertical-align: middle;
+        }
+
+    </style>
+
+@endpush
+
 {{-- page content --}}
 @section('content')
 
@@ -81,6 +93,18 @@
                                         Serial No
                                     </th>
                                     <th>
+                                        Purchase Date
+                                    </th>
+                                    <th>
+                                        Warranty Period
+                                    </th>
+                                    <th>
+                                        Warranty End
+                                    </th>
+                                    <th>
+                                        Warranty Status
+                                    </th>
+                                    <th>
                                         <i class="fas fa-dollar-sign text-primary mr-2"></i>
                                         Cost
                                     </th>
@@ -92,6 +116,9 @@
                                     </th>
                                     <th>
                                         Asset Condition
+                                    </th>
+                                    <th>
+                                        Remarks
                                     </th>
                                     <th>
                                         <i class="far fa-sticky-note text-primary mr-2"></i>
@@ -110,27 +137,32 @@
                                 <tbody>
                                 @foreach($assets as $asset)
                                     <tr>
-                                        <td>{{ $asset->first_name ? $asset->first_name : '-' }}</td>
-                                        <td>{{ $asset->first_name ? $asset->first_name : '-' }}</td>
-                                        <td>{{ $asset->last_name ? $asset->last_name : '-' }}</td>
-                                        <td>{{ $asset->email ? $asset->email : '-' }}</td>
-                                        <td>{{ $asset->phone ? $asset->phone : '-' }}</td>
-                                        <td>{{ $asset->website ? $asset->website : '-' }}</td>
-                                        <td>{{ $asset->getFullAddress() ? $asset->getFullAddress() : '-' }}</td>
-                                        <td></td>
+                                        <td>{{ $asset->asset_id ? $asset->asset_id : '-' }}</td>
+                                        <td>{{ $asset->brand ? $asset->brand : '-' }}</td>
+                                        <td>{{ $asset->model ? $asset->model : '-' }}</td>
+                                        <td>{{ $asset->serial_no ? $asset->serial_no : '-' }}</td>
+                                        <td>{{ $asset->purchase_date ? $asset->purchase_date->toDateString() : '-' }}</td>
+                                        <td>{{ $asset->warranty_period ? $asset->warranty_period : '-' }}</td>
+                                        <td>{{ $asset->warranty_end ? $asset->warranty_end->toDateString() : '-' }}</td>
+                                        <td>{{ $asset->warranty_status ? $asset->warranty_status : '-' }}</td>
+                                        <td>{{ $asset->cost ? $asset->cost : '-' }}</td>
+                                        <td>{{ $asset->variation ? $asset->variation : '-' }}</td>
+                                        <td>{{ $asset->contract ? $asset->contract : '-' }}</td>
+                                        <td>{{ $asset->asset_condition ? $asset->asset_condition : '-' }}</td>
+                                        <td>{{ $asset->remarks ? $asset->remarks : '-' }}</td>
+                                        <td>{{ $asset->description ? $asset->description : '-' }}</td>
                                         <td>
-                                            @foreach($asset->roles as $role)
-                                                <span class="badge bg-{{ $commonSetting ? $commonSetting->skin : 'primary' }}">{{ $role->name }}</span>
+                                            @foreach ($asset->images as $image)
+                                                <img class="img-fluid m-1" width="50" src="{{ asset('uploads/assets/image/'.$image->image) }}" alt="{{ $image->image }}">
                                             @endforeach
                                         </td>
-                                        <td>{{ $asset->created_at->toDateString() }}</td>
                                         <td class="text-center">
                                             <x-ActionButtonGroup
-                                                :viewRoute="route('assets.show', $asset->id)"
-                                                :editRoute="route('assets.edit', $asset->id)"
-                                                :deleteRoute="route('assets.destroy', $asset->id)"
-                                                :forceDeleteRoute="route('assets.fdelete', $asset->id)"
-                                                :restoreRoute="route('assets.restore', $asset->id)"
+                                                :viewRoute="route('assets.show', $asset->asset_id)"
+                                                :editRoute="route('assets.edit', $asset->asset_id)"
+                                                :deleteRoute="route('assets.destroy', $asset->asset_id)"
+                                                :forceDeleteRoute="route('assets.fdelete', $asset->asset_id)"
+                                                :restoreRoute="route('assets.restore', $asset->asset_id)"
                                             ></x-ActionButtonGroup>
                                         </td>
                                     </tr>

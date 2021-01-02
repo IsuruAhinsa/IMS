@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SaveVendorRequest;
 use App\Vendor;
-use Illuminate\Http\Request;
 
 class VendorController extends Controller
 {
@@ -27,7 +27,7 @@ class VendorController extends Controller
      */
     public function create()
     {
-        return view('vendors.create');
+        return view('vendors.create')->with('vendor', new Vendor);
     }
 
     /**
@@ -36,7 +36,7 @@ class VendorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SaveVendorRequest $request)
     {
         $vendor = new Vendor;
         $vendor->vendor_id = $request->input('vendor_id');
@@ -46,8 +46,8 @@ class VendorController extends Controller
         $vendor->address = $request->input('address');
         $vendor->city = $request->input('city');
         $vendor->state_or_province = $request->input('state_or_province');
-        $vendor->country = $request->input('postal_code');
-        $vendor->postal_code = $request->input('country');
+        $vendor->country = $request->input('country');
+        $vendor->postal_code = $request->input('postal_code');
         $vendor->phone_number = $request->input('phone_number');
         $vendor->fax_number = $request->input('fax_number');
         $vendor->email = $request->input('email');
@@ -85,7 +85,7 @@ class VendorController extends Controller
      * @param  \App\Vendor  $vendor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Vendor $vendor)
+    public function update(SaveVendorRequest $request, Vendor $vendor)
     {
         $vendor->vendor_id = $request->input('vendor_id');
         $vendor->vendor_code = $request->input('vendor_code');
@@ -94,8 +94,8 @@ class VendorController extends Controller
         $vendor->address = $request->input('address');
         $vendor->city = $request->input('city');
         $vendor->state_or_province = $request->input('state_or_province');
-        $vendor->country = $request->input('postal_code');
-        $vendor->postal_code = $request->input('country');
+        $vendor->country = $request->input('country');
+        $vendor->postal_code = $request->input('postal_code');
         $vendor->phone_number = $request->input('phone_number');
         $vendor->fax_number = $request->input('fax_number');
         $vendor->email = $request->input('email');

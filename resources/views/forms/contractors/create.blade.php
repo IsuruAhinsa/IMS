@@ -1,6 +1,10 @@
-<form action="{{ route('contractors.store') }}" method="POST">
+<form action="{{ $route }}" method="POST">
 
     @csrf
+
+    @if(Route::currentRouteName() == 'contractors.edit')
+        @method('PUT')
+    @endif
 
     <div class="row">
 
@@ -14,6 +18,7 @@
                     name="reference_id"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter Reference ID"
+                    value="{{ old('reference_id', $contractor->reference_id)}}"
                 >
             </div>
 
@@ -25,6 +30,7 @@
                     name="reference_code"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter Reference Code"
+                    value="{{ old('reference_code', $contractor->reference_code)}}"
                 >
             </div>
 
@@ -37,12 +43,12 @@
                     id="contract_status"
                 >
                     <option selected disabled>Select Contract Status</option>
-                    <option>Alaska</option>
-                    <option>California</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
+                    <option {{ old('contract_status', $contractor->contract_status) == 1 ? 'selected' : '' }} value="1" >Status 1</option>
+                    <option {{ old('contract_status', $contractor->contract_status) == 2 ? 'selected' : '' }} value="2" >Status 2</option>
+                    <option {{ old('contract_status', $contractor->contract_status) == 3 ? 'selected' : '' }} value="3" >Status 3</option>
+                    <option {{ old('contract_status', $contractor->contract_status) == 4 ? 'selected' : '' }} value="4" >Status 4</option>
+                    <option {{ old('contract_status', $contractor->contract_status) == 5 ? 'selected' : '' }} value="5" >Status 5</option>
+                    <option {{ old('contract_status', $contractor->contract_status) == 6 ? 'selected' : '' }} value="6" >Status 6</option>
                 </select>
             </div>
 
@@ -54,6 +60,7 @@
                     name="contractor_no"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter Contractor No"
+                    value="{{ old('contractor_no', $contractor->contractor_no)}}"
                 >
             </div>
 
@@ -65,6 +72,7 @@
                     name="contractor_name"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter Contractor Name"
+                    value="{{ old('contractor_name', $contractor->contractor_name)}}"
                 >
             </div>
 
@@ -81,6 +89,8 @@
                         data-target="#start_date"
                         id="start_date"
                         name="start_date"
+                        placeholder="Select Date"
+                        value="{{ old('start_date', $contractor->start_date) }}"
                     />
                     <div class="input-group-append" data-target="#start_date" data-toggle="datetimepicker">
                         <div class="input-group-text rounded-0"><i class="fa fa-calendar"></i></div>
@@ -97,6 +107,8 @@
                         data-target="#end_date"
                         id="end_date"
                         name="end_date"
+                        placeholder="Select Date"
+                        value="{{ old('end_date', $contractor->end_date)}}"
                     />
                     <div class="input-group-append" data-target="#end_date" data-toggle="datetimepicker">
                         <div class="input-group-text rounded-0"><i class="fa fa-calendar"></i></div>
@@ -113,12 +125,12 @@
                     id="type"
                 >
                     <option selected disabled>Select Type</option>
-                    <option>Alaska</option>
-                    <option>California</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
+                    <option {{ old('type', $contractor->type) == 1 ? 'selected' : '' }} value="1">Type 1</option>
+                    <option {{ old('type', $contractor->type) == 2 ? 'selected' : '' }} value="2">Type 2</option>
+                    <option {{ old('type', $contractor->type) == 3 ? 'selected' : '' }} value="3">Type 3</option>
+                    <option {{ old('type', $contractor->type) == 4 ? 'selected' : '' }} value="4">Type 4</option>
+                    <option {{ old('type', $contractor->type) == 5 ? 'selected' : '' }} value="5">Type 5</option>
+                    <option {{ old('type', $contractor->type) == 6 ? 'selected' : '' }} value="6">Type 6</option>
                 </select>
             </div>
 
@@ -130,10 +142,11 @@
                     name="contractor_value"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter Contractor Value"
+                    value="{{ old('contractor_value', $contractor->contractor_value)}}"
                 >
             </div>
 
-            <x-SubmitButton :btnText="'Create Contractor'" :cancelBtnRoute="route('contractors.index')"></x-SubmitButton>
+            <x-SubmitButton :btnText="$btnText" :cancelBtnRoute="route('contractors.index')"></x-SubmitButton>
 
         </div>
 

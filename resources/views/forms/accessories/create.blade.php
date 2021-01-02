@@ -1,10 +1,32 @@
-<form action="{{ route('accessories.store') }}" method="POST">
+<form action="{{ $route }}" method="POST">
 
     @csrf
+
+    @if(Route::currentRouteName() == 'accessories.edit')
+        @method('PUT')
+    @endif
 
     <div class="row">
 
         <div class="col-md-6">
+
+            <div class="form-group">
+                <label class="col-form-label" for="asset_id">Asset</label>
+                <select
+                    class="form-control form-control-sm rounded-0 select2bs4"
+                    style="width: 100%;"
+                    name="asset_id"
+                    id="asset_id"
+                >
+                    <option selected disabled>Select Asset</option>
+                    <option>Alaska</option>
+                    <option>California</option>
+                    <option>Delaware</option>
+                    <option>Tennessee</option>
+                    <option>Texas</option>
+                    <option>Washington</option>
+                </select>
+            </div>
 
             <div class="form-group">
                 <label for="asset_tag_id" class="col-form-label">Asset Tag ID</label>
@@ -14,6 +36,7 @@
                     name="asset_tag_id"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter Asset Tag ID"
+                    value="{{ old('asset_tag_id', $accessory->asset_tag_id)}}"
                 >
             </div>
 
@@ -25,6 +48,7 @@
                     name="asset_tag"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter Asset Tag"
+                    value="{{ old('asset_tag', $accessory->asset_tag) }}"
                 >
             </div>
 
@@ -36,8 +60,13 @@
                     name="asset_name"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter Asset Name"
+                    value="{{ old('asset_name', $accessory->asset_name) }}"
                 >
             </div>
+
+        </div>
+
+        <div class="col-md-6">
 
             <div class="form-group">
                 <label class="col-form-label" for="asset_disacription">Asset Disacription</label>
@@ -47,12 +76,9 @@
                     name="asset_disacription"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter Asset Disacription"
+                    value="{{ old('asset_disacription', $accessory->asset_disacription) }}"
                 >
             </div>
-
-        </div>
-
-        <div class="col-md-6">
 
             <div class="form-group">
                 <label class="col-form-label" for="asset_model">Asset Model</label>
@@ -62,6 +88,7 @@
                     name="asset_model"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter Asset Model"
+                    value="{{ old('asset_model', $accessory->asset_model) }}"
                 >
             </div>
 
@@ -73,6 +100,7 @@
                     name="asset_serial"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter Asset Serial"
+                    value="{{ old('asset_serial', $accessory->asset_serial) }}"
                 >
             </div>
 
@@ -84,10 +112,11 @@
                     name="asset_manufacture"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter Asset Manufacture"
+                    value="{{ old('asset_manufacture', $accessory->asset_manufacture) }}"
                 >
             </div>
 
-            <x-SubmitButton :btnText="'Create Accessory'" :cancelBtnRoute="route('accessories.index')"></x-SubmitButton>
+            <x-SubmitButton :btnText="$btnText" :cancelBtnRoute="route('accessories.index')"></x-SubmitButton>
 
         </div>
 

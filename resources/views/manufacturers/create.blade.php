@@ -45,18 +45,6 @@
 
                             @include('forms.manufacturers.create', [
                                 "route" => route('manufacturers.store'),
-                                "manufacturer_id" => old('manufacturer_id'),
-                                "manufacturer_code" => old('manufacturer_code'),
-                                "manufacturer_name" => old('manufacturer_name'),
-                                "contact_person" => old('contact_person'),
-                                "address" => old('address'),
-                                "city"  => old('city'),
-                                "state_or_province" => old('state_or_province'),
-                                "postal_code" => old('postal_code'),
-                                "country" => old('country'),
-                                "phone_number" => old('phone_number'),
-                                "fax_number" => old('fax_number'),
-                                "email" => old('email'),
                                 "btnText" => "Create Manufacture",
                             ])
 

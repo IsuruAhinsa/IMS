@@ -67,6 +67,10 @@
                                 <tr>
                                     <th>
                                         <i class="fas fa-search-location text-primary mr-2"></i>
+                                        Location ID
+                                    </th>
+                                    <th>
+                                        <i class="fas fa-search-location text-primary mr-2"></i>
                                         Location Code
                                     </th>
                                     <th>
@@ -86,16 +90,17 @@
                                 <tbody>
                                 @foreach($locations as $location)
                                     <tr>
-                                        <td>{{ $location->first_name ? $location->first_name : '-' }}</td>
-                                        <td>{{ $location->first_name ? $location->first_name : '-' }}</td>
-                                        <td>{{ $location->last_name ? $location->last_name : '-' }}</td>
+                                        <td>{{ $location->location_id ? $location->location_id : '-' }}</td>
+                                        <td>{{ $location->location_code ? $location->location_code : '-' }}</td>
+                                        <td>{{ $location->description ? $location->description : '-' }}</td>
+                                        <td></td>
                                         <td class="text-center">
                                             <x-ActionButtonGroup
-                                                :viewRoute="route('locations.show', $location->id)"
-                                                :editRoute="route('locations.edit', $location->id)"
-                                                :deleteRoute="route('locations.destroy', $location->id)"
-                                                :forceDeleteRoute="route('locations.fdelete', $location->id)"
-                                                :restoreRoute="route('locations.restore', $location->id)"
+                                                :viewRoute="route('locations.show', $location->location_id)"
+                                                :editRoute="route('locations.edit', $location->location_id)"
+                                                :deleteRoute="route('locations.destroy', $location->location_id)"
+                                                :forceDeleteRoute="route('locations.fdelete', $location->location_id)"
+                                                :restoreRoute="route('locations.restore', $location->location_id)"
                                             ></x-ActionButtonGroup>
                                         </td>
                                     </tr>

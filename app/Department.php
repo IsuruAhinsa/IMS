@@ -12,6 +12,13 @@ class Department extends Model
     protected $primaryKey = 'department_id';
 
     /**
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = false;
+
+    /**
      * The attributes that are mass assignable.
      */
     protected $fillable = [
@@ -19,4 +26,12 @@ class Department extends Model
         'department_code',
         'description',
     ];
+
+    /**
+     * Get the assets for the department.
+     */
+    public function assets()
+    {
+        return $this->hasMany(Asset::class, 'department_id');
+    }
 }

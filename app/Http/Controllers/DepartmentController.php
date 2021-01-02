@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Department;
+use App\Http\Requests\SaveDepartmentRequest;
 use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
@@ -27,14 +28,14 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        return view('departments.create');
+        return view('departments.create')->with('department', new Department);
     }
 
     /**
      * Store a newly created resource in storage.
      *
      */
-    public function store(Request $request)
+    public function store(SaveDepartmentRequest $request)
     {
         $department = new Department;
         $department->department_id = $request->input('department_id');
@@ -42,7 +43,7 @@ class DepartmentController extends Controller
         $department->description = $request->input('description');
         $department->save();
 
-        return redirect()->route('department.index')->with('success', 'Department created successfully.');
+        return redirect()->route('departments.index')->with('success', 'Department created successfully.');
     }
 
     /**
@@ -67,7 +68,7 @@ class DepartmentController extends Controller
      * Update the specified resource in storage.
      *
      */
-    public function update(Request $request, Department $department)
+    public function update(SaveDepartmentRequest $request, Department $department)
     {
         $department->department_id = $request->input('department_id');
         $department->department_code = $request->input('department_code');

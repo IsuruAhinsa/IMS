@@ -19,7 +19,7 @@
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ url('/') }}">Dashboard</a></li>
                         @if(request('status') == 'deleted')
-                            <li class="breadcrumb-item"><a href="{{ route('assets.index') }}">Hospitals</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('hospitals.index') }}">Hospitals</a></li>
                             <li class="breadcrumb-item active">Deleted Hospitals</li>
                         @else
                             <li class="breadcrumb-item active">Hospitals</li>
@@ -95,6 +95,18 @@
                                         <i class="fas fa-envelope text-primary mr-2"></i>
                                         Email
                                     </th>
+                                    <th>
+                                        WO Prefix
+                                    </th>
+                                    <th>
+                                        WOCM SL No
+                                    </th>
+                                    <th>
+                                        WOPM SL No
+                                    </th>
+                                    <th>
+                                        Hospital Code Prefix
+                                    </th>
                                     <th class="text-center">
                                         <i class="fas fa-ellipsis-v text-primary mr-2"></i>
                                         Action
@@ -104,21 +116,25 @@
                                 <tbody>
                                 @foreach($hospitals as $hospital)
                                     <tr>
-                                        <td>{{ $hospital->first_name ? $hospital->first_name : '-' }}</td>
-                                        <td>{{ $hospital->first_name ? $hospital->first_name : '-' }}</td>
-                                        <td>{{ $hospital->last_name ? $hospital->last_name : '-' }}</td>
+                                        <td>{{ $hospital->hospital_id ? $hospital->hospital_id : '-' }}</td>
+                                        <td>{{ $hospital->hospital_code ? $hospital->hospital_code : '-' }}</td>
+                                        <td>{{ $hospital->hospital_name ? $hospital->hospital_name : '-' }}</td>
+                                        <td>{{ $hospital->region ? $hospital->region : '-' }}</td>
+                                        <td>{{ $hospital->address ? $hospital->address : '-' }}</td>
+                                        <td>{{ $hospital->telephone ? $hospital->telephone : '-' }}</td>
+                                        <td>{{ $hospital->fax ? $hospital->fax : '-' }}</td>
                                         <td>{{ $hospital->email ? $hospital->email : '-' }}</td>
-                                        <td>{{ $hospital->phone ? $hospital->phone : '-' }}</td>
-                                        <td>{{ $hospital->website ? $hospital->website : '-' }}</td>
-                                        <td>{{ $hospital->getFullAddress() ? $hospital->getFullAddress() : '-' }}</td>
-                                        <td></td>
+                                        <td>{{ $hospital->wo_prefix ? $hospital->wo_prefix : '-' }}</td>
+                                        <td>{{ $hospital->wocm_slno ? $hospital->wocm_slno : '-' }}</td>
+                                        <td>{{ $hospital->wopm_slno ? $hospital->wopm_slno : '-' }}</td>
+                                        <td>{{ $hospital->hospital_code_prefix ? $hospital->hospital_code_prefix : '-' }}</td>
                                         <td class="text-center">
                                             <x-ActionButtonGroup
-                                                :viewRoute="route('hospitals.show', $hospital->id)"
-                                                :editRoute="route('hospitals.edit', $hospital->id)"
-                                                :deleteRoute="route('hospitals.destroy', $hospital->id)"
-                                                :forceDeleteRoute="route('hospitals.fdelete', $hospital->id)"
-                                                :restoreRoute="route('hospitals.restore', $hospital->id)"
+                                                :viewRoute="route('hospitals.show', $hospital->hospital_id)"
+                                                :editRoute="route('hospitals.edit', $hospital->hospital_id)"
+                                                :deleteRoute="route('hospitals.destroy', $hospital->hospital_id)"
+                                                :forceDeleteRoute="route('hospitals.fdelete', $hospital->hospital_id)"
+                                                :restoreRoute="route('hospitals.restore', $hospital->hospital_id)"
                                             ></x-ActionButtonGroup>
                                         </td>
                                     </tr>

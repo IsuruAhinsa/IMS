@@ -43,7 +43,10 @@
                                 <x-Alert type="danger" :message="$errors->first()"></x-Alert>
                             @endif
 
-                            @include('forms.accessories.create')
+                            @include('forms.accessories.create', [
+                                'route' => route('accessories.store'),
+                                'btnText' => 'Create Accessory',
+                            ])
 
                         </div>
                     </div>

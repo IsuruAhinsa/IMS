@@ -1,6 +1,10 @@
-<form action="{{ route('vendors.store') }}" method="POST">
+<form action="{{ $route }}" method="POST">
 
     @csrf
+
+    @if(Route::currentRouteName() == 'vendors.edit')
+        @method('PUT')
+    @endif
 
     <div class="row">
 
@@ -14,6 +18,7 @@
                     name="vendor_id"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter Vendor ID"
+                    value="{{ old('vendor_id', $vendor->vendor_id) }}"
                 >
             </div>
 
@@ -25,17 +30,19 @@
                     name="vendor_code"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter Vendor Code"
+                    value="{{ old('vendor_code', $vendor->vendor_code) }}"
                 >
             </div>
 
             <div class="form-group">
-                <label for="vendor_name" class="col-form-label">Vendor Name</label>
+                <label for="supplier_name" class="col-form-label">Supplier Name</label>
                 <input
                     type="text"
-                    id="vendor_name"
-                    name="vendor_name"
+                    id="supplier_name"
+                    name="supplier_name"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter Vendor Name"
+                    value="{{ old('supplier_name', $vendor->supplier_name) }}"
                 >
             </div>
 
@@ -47,6 +54,7 @@
                     name="contact_person"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter Contact Person"
+                    value="{{ old('contact_person', $vendor->contact_person) }}"
                 >
             </div>
 
@@ -58,6 +66,7 @@
                     name="address"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter Address"
+                    value="{{ old('address', $vendor->address) }}"
                 >
             </div>
 
@@ -69,6 +78,7 @@
                     name="city"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter City"
+                    value="{{ old('city', $vendor->city) }}"
                 >
             </div>
 
@@ -77,24 +87,14 @@
         <div class="col-md-6">
 
             <div class="form-group">
-                <label for="state" class="col-form-label">State / Province</label>
+                <label for="state_or_province" class="col-form-label">State / Province</label>
                 <input
                     type="text"
-                    id="state"
-                    name="state"
+                    id="state_or_province"
+                    name="state_or_province"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter State or Province"
-                >
-            </div>
-
-            <div class="form-group">
-                <label for="country" class="col-form-label">Country</label>
-                <input
-                    type="text"
-                    id="country"
-                    name="country"
-                    class="form-control form-control-sm rounded-0"
-                    placeholder="Enter Country"
+                    value="{{ old('state_or_province', $vendor->state_or_province) }}"
                 >
             </div>
 
@@ -106,28 +106,43 @@
                     name="postal_code"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter Postal Code"
+                    value="{{ old('postal_code', $vendor->postal_code) }}"
                 >
             </div>
 
             <div class="form-group">
-                <label for="phone" class="col-form-label">Phone</label>
+                <label for="country" class="col-form-label">Country</label>
                 <input
                     type="text"
-                    id="phone"
-                    name="phone"
+                    id="country"
+                    name="country"
+                    class="form-control form-control-sm rounded-0"
+                    placeholder="Enter Country"
+                    value="{{ old('country', $vendor->country) }}"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="phone_number" class="col-form-label">Phone</label>
+                <input
+                    type="text"
+                    id="phone_number"
+                    name="phone_number"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter Phone"
+                    value="{{ old('phone_number', $vendor->phone_number) }}"
                 >
             </div>
 
             <div class="form-group">
-                <label for="fax" class="col-form-label">Fax</label>
+                <label for="fax_number" class="col-form-label">Fax</label>
                 <input
                     type="text"
-                    id="fax"
-                    name="fax"
+                    id="fax_number"
+                    name="fax_number"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter Fax"
+                    value="{{ old('fax_number', $vendor->fax_number) }}"
                 >
             </div>
 
@@ -139,10 +154,11 @@
                     name="email"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter Email"
+                    value="{{ old('email', $vendor->email) }}"
                 >
             </div>
 
-            <x-SubmitButton :btnText="'Create Vendor'" :cancelBtnRoute="route('hospitals.index')"></x-SubmitButton>
+            <x-SubmitButton :btnText="$btnText" :cancelBtnRoute="route('vendors.index')"></x-SubmitButton>
 
         </div>
 

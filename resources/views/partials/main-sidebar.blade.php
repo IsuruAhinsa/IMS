@@ -73,7 +73,7 @@
 
                         <li class="nav-item">
                             <a href="{{ route('assets.create') }}" class="nav-link {{ Request::is('assets/create') ? 'active' : '' }}">
-                                <i class="fas fa-plus-square nav-icon"></i>
+                                <i class="far fa-plus-square nav-icon"></i>
                                 <p>Create Asset</p>
                             </a>
                         </li>
@@ -85,7 +85,7 @@
                 <li class="nav-item has-treeview {{ Request::is('accessories/*') || Request::is('accessories') ? 'menu-open' : '' }}">
 
                     <a href="#" class="nav-link {{ Request::is('accessories/*') || Request::is('accessories') ? 'active' : '' }}">
-                        <i class="nav-icon far fa-keyboard"></i>
+                        <i class="nav-icon fas fa-keyboard"></i>
                         <p>
                             Accessories
                             <i class="right fas fa-angle-left"></i>
@@ -103,7 +103,7 @@
 
                         <li class="nav-item">
                             <a href="{{ route('accessories.create') }}" class="nav-link {{ Request::is('accessories/create') ? 'active' : '' }}">
-                                <i class="fas fa-plus-square nav-icon"></i>
+                                <i class="far fa-plus-square nav-icon"></i>
                                 <p>Create Accessory</p>
                             </a>
                         </li>
@@ -133,7 +133,7 @@
 
                         <li class="nav-item">
                             <a href="{{ route('hospitals.create') }}" class="nav-link {{ Request::is('hospitals/create') ? 'active' : '' }}">
-                                <i class="fas fa-plus-square nav-icon"></i>
+                                <i class="far fa-plus-square nav-icon"></i>
                                 <p>Create Hospital</p>
                             </a>
                         </li>
@@ -163,7 +163,7 @@
 
                         <li class="nav-item">
                             <a href="{{ route('locations.create') }}" class="nav-link {{ Request::is('locations/create') ? 'active' : '' }}">
-                                <i class="fas fa-plus-square nav-icon"></i>
+                                <i class="far fa-plus-square nav-icon"></i>
                                 <p>Create Location</p>
                             </a>
                         </li>
@@ -193,7 +193,7 @@
 
                         <li class="nav-item">
                             <a href="{{ route('categories.create') }}" class="nav-link {{ Request::is('categories/create') ? 'active' : '' }}">
-                                <i class="fas fa-plus-square nav-icon"></i>
+                                <i class="far fa-plus-square nav-icon"></i>
                                 <p>Create Category</p>
                             </a>
                         </li>
@@ -223,7 +223,7 @@
 
                         <li class="nav-item">
                             <a href="{{ route('manufacturers.create') }}" class="nav-link {{ Request::is('manufacturers/create') ? 'active' : '' }}">
-                                <i class="fas fa-plus-square nav-icon"></i>
+                                <i class="far fa-plus-square nav-icon"></i>
                                 <p>Create Manufacture</p>
                             </a>
                         </li>
@@ -246,14 +246,14 @@
 
                         <li class="nav-item">
                             <a href="{{ route('departments.index') }}" class="nav-link {{ Request::is('departments') ? 'active' : '' }}">
-                                <i class="fas fa-building nav-icon"></i>
+                                <i class="far fa-building nav-icon"></i>
                                 <p>All Departments</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a href="{{ route('departments.create') }}" class="nav-link {{ Request::is('departments/create') ? 'active' : '' }}">
-                                <i class="fas fa-plus-square nav-icon"></i>
+                                <i class="far fa-plus-square nav-icon"></i>
                                 <p>Create Department</p>
                             </a>
                         </li>
@@ -283,7 +283,7 @@
 
                         <li class="nav-item">
                             <a href="{{ route('vendors.create') }}" class="nav-link {{ Request::is('vendors/create') ? 'active' : '' }}">
-                                <i class="fas fa-plus-square nav-icon"></i>
+                                <i class="far fa-plus-square nav-icon"></i>
                                 <p>Create Vendor</p>
                             </a>
                         </li>
@@ -313,7 +313,7 @@
 
                         <li class="nav-item">
                             <a href="{{ route('contractors.create') }}" class="nav-link {{ Request::is('contractors/create') ? 'active' : '' }}">
-                                <i class="fas fa-plus-square nav-icon"></i>
+                                <i class="far fa-plus-square nav-icon"></i>
                                 <p>Create Contractor</p>
                             </a>
                         </li>
@@ -343,8 +343,38 @@
 
                         <li class="nav-item">
                             <a href="{{ route('spare-parts.create') }}" class="nav-link {{ Request::is('spare-parts/create') ? 'active' : '' }}">
-                                <i class="fas fa-plus-square nav-icon"></i>
+                                <i class="far fa-plus-square nav-icon"></i>
                                 <p>Create Spare Used</p>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+                <li class="nav-item has-treeview {{ Request::is('work-orders/*') || Request::is('work-orders') ? 'menu-open' : '' }}">
+
+                    <a href="#" class="nav-link {{ Request::is('work-orders/*') || Request::is('work-orders') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-briefcase"></i>
+                        <p>
+                            Work Orders
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+
+                    <ul class="nav nav-treeview">
+
+                        <li class="nav-item">
+                            <a href="{{ route('work-orders.index') }}" class="nav-link {{ Request::is('work-orders') ? 'active' : '' }}">
+                                <i class="fas fa-briefcase nav-icon"></i>
+                                <p>All Orders</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('work-orders.create') }}" class="nav-link {{ Request::is('work-orders/create') ? 'active' : '' }}">
+                                <i class="far fa-plus-square nav-icon"></i>
+                                <p>Create Order</p>
                             </a>
                         </li>
 

@@ -100,22 +100,22 @@
                                 <tbody>
                                 @foreach($contractors as $contractor)
                                     <tr>
-                                        <td>{{ $contractor->first_name ? $contractor->first_name : '-' }}</td>
-                                        <td>{{ $contractor->first_name ? $contractor->first_name : '-' }}</td>
-                                        <td>{{ $contractor->last_name ? $contractor->last_name : '-' }}</td>
-                                        <td>{{ $contractor->email ? $contractor->email : '-' }}</td>
-                                        <td>{{ $contractor->phone ? $contractor->phone : '-' }}</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>{{ $contractor->created_at->toDateString() }}</td>
+                                        <td>{{ $contractor->reference_id ? $contractor->reference_id : '-' }}</td>
+                                        <td>{{ $contractor->reference_code ? $contractor->reference_code : '-' }}</td>
+                                        <td>{{ $contractor->contract_status ? $contractor->contract_status : '-' }}</td>
+                                        <td>{{ $contractor->contractor_no ? $contractor->contractor_no : '-' }}</td>
+                                        <td>{{ $contractor->contractor_name ? $contractor->contractor_name : '-' }}</td>
+                                        <td>{{ $contractor->start_date ? $contractor->start_date->toFormattedDateString() : '-' }}</td>
+                                        <td>{{ $contractor->end_date ? $contractor->end_date->toFormattedDateString() : '-' }}</td>
+                                        <td>{{ $contractor->type ? $contractor->type : '-' }}</td>
+                                        <td>{{ $contractor->contractor_value ? $contractor->contractor_value : '-' }}</td>
                                         <td class="text-center">
                                             <x-ActionButtonGroup
-                                                :viewRoute="route('contractors.show', $contractor->id)"
-                                                :editRoute="route('contractors.edit', $contractor->id)"
-                                                :deleteRoute="route('contractors.destroy', $contractor->id)"
-                                                :forceDeleteRoute="route('contractors.fdelete', $contractor->id)"
-                                                :restoreRoute="route('contractors.restore', $contractor->id)"
+                                                :viewRoute="route('contractors.show', $contractor->reference_id)"
+                                                :editRoute="route('contractors.edit', $contractor->reference_id)"
+                                                :deleteRoute="route('contractors.destroy', $contractor->reference_id)"
+                                                :forceDeleteRoute="route('contractors.fdelete', $contractor->reference_id)"
+                                                :restoreRoute="route('contractors.restore', $contractor->reference_id)"
                                             ></x-ActionButtonGroup>
                                         </td>
                                     </tr>

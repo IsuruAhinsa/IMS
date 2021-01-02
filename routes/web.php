@@ -37,13 +37,14 @@ Route::middleware('auth')->group(function () {
     Route::resource('assets', 'AssetController');
     Route::get('assets/{asset_id}/restore', 'AssetController@restore')->name('assets.restore');
     Route::get('assets/{asset_id}/fdelete', 'AssetController@fdelete')->name('assets.fdelete');
+    Route::get('assets/image/{id}/delete', 'AssetController@deleteImage')->name('assets.deleteImage');
 
     /*
      *  Accessories
      */
     Route::resource('accessories', 'AccessoryController');
-    Route::get('accessories/{accessory_id}/restore', 'AccessoryController@restore')->name('accessories.restore');
-    Route::get('accessories/{accessory_id}/fdelete', 'AccessoryController@fdelete')->name('accessories.fdelete');
+    Route::get('accessories/{asset_tag_id}/restore', 'AccessoryController@restore')->name('accessories.restore');
+    Route::get('accessories/{asset_tag_id}/fdelete', 'AccessoryController@fdelete')->name('accessories.fdelete');
 
     /*
      *  Hospitals
@@ -63,8 +64,8 @@ Route::middleware('auth')->group(function () {
      *  Categories
      */
     Route::resource('categories', 'CategoryController');
-    Route::get('categories/{category_id}/restore', 'CategoryController@restore')->name('categories.restore');
-    Route::get('categories/{category_id}/fdelete', 'CategoryController@fdelete')->name('categories.fdelete');
+    Route::get('categories/{asset_category_id}/restore', 'CategoryController@restore')->name('categories.restore');
+    Route::get('categories/{asset_category_id}/fdelete', 'CategoryController@fdelete')->name('categories.fdelete');
 
     /*
      *  Manufacturers
@@ -91,15 +92,22 @@ Route::middleware('auth')->group(function () {
     *  Constructors
     */
     Route::resource('contractors', 'ContractorController');
-    Route::get('contractors/{contractor_id}/restore', 'ContractorController@restore')->name('contractors.restore');
-    Route::get('contractors/{contractor_id}/fdelete', 'ContractorController@fdelete')->name('contractors.fdelete');
+    Route::get('contractors/{reference_id}/restore', 'ContractorController@restore')->name('contractors.restore');
+    Route::get('contractors/{reference_id}/fdelete', 'ContractorController@fdelete')->name('contractors.fdelete');
 
     /*
     *  Spare Parts
     */
     Route::resource('spare-parts', 'SparePartController');
-    Route::get('spare-parts/{spare_part_id}/restore', 'SparePartController@restore')->name('spare-parts.restore');
-    Route::get('spare-parts/{spare_part_id}/fdelete', 'SparePartController@fdelete')->name('spare-parts.fdelete');
+    Route::get('spare-parts/{spare_id}/restore', 'SparePartController@restore')->name('spare-parts.restore');
+    Route::get('spare-parts/{spare_id}/fdelete', 'SparePartController@fdelete')->name('spare-parts.fdelete');
+
+    /*
+    *  Work Orders
+    */
+    Route::resource('work-orders', 'WorkOrderController');
+    Route::get('work-orders/{work_order_id}/restore', 'WorkOrderController@restore')->name('work-orders.restore');
+    Route::get('work-orders/{work_order_id}/fdelete', 'WorkOrderController@fdelete')->name('work-orders.fdelete');
 
     /*
      *  Users

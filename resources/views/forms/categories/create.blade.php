@@ -1,19 +1,24 @@
-<form action="{{ route('categories.store') }}" method="POST">
+<form action="{{ $route }}" method="POST">
 
     @csrf
+
+    @if(Route::currentRouteName() == 'categories.edit')
+        @method('PUT')
+    @endif
 
     <div class="row">
 
         <div class="col-md-6">
 
             <div class="form-group">
-                <label for="category_id" class="col-form-label">Category ID</label>
+                <label for="asset_category_id" class="col-form-label">Category ID</label>
                 <input
                     type="text"
-                    id="category_id"
-                    name="category_id"
+                    id="asset_category_id"
+                    name="asset_category_id"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter Category ID"
+                    value="{{ old('asset_category_id', $category->asset_category_id)}}"
                 >
             </div>
 
@@ -25,17 +30,19 @@
                     name="ecri_code"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter ECRI Code"
+                    value="{{ old('ecri_code', $category->ecri_code)}}"
                 >
             </div>
 
             <div class="form-group">
-                <label for="category_name" class="col-form-label">Category Name</label>
+                <label for="asset_category" class="col-form-label">Category Name</label>
                 <input
                     type="text"
-                    id="category_name"
-                    name="category_name"
+                    id="asset_category"
+                    name="asset_category"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter Category Name"
+                    value="{{ old('asset_category', $category->asset_category)}}"
                 >
             </div>
 
@@ -48,7 +55,7 @@
                     rows="5"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter Asset Definition"
-                ></textarea>
+                >{{ old('asset_definition', $category->asset_definition) }}</textarea>
             </div>
 
             <div class="form-group">
@@ -59,6 +66,7 @@
                     name="asset_type"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter Asset Type"
+                    value="{{ old('asset_type', $category->asset_type)}}"
                 >
             </div>
 
@@ -71,12 +79,12 @@
                     id="classification"
                 >
                     <option selected disabled>Select Classification</option>
-                    <option>Alaska</option>
-                    <option>California</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
+                    <option {{ old('classification', $category->classification) == 'General' ? 'selected' : '' }} value="General">General</option>
+                    <option {{ old('classification', $category->classification) == 'Therapeutic' ? 'selected' : '' }} value="Therapeutic">Therapeutic</option>
+                    <option {{ old('classification', $category->classification) == 'Diagnostic' ? 'selected' : '' }} value="Diagnostic">Diagnostic</option>
+                    <option {{ old('classification', $category->classification) == 'Laboratory' ? 'selected' : '' }} value="Laboratory">Laboratory</option>
+                    <option {{ old('classification', $category->classification) == 'Life Support' ? 'selected' : '' }} value="Life Support">Life Support</option>
+                    <option {{ old('classification', $category->classification) == 'Washington' ? 'selected' : '' }} value="Washington">Washington</option>
                 </select>
             </div>
 
@@ -88,6 +96,7 @@
                     name="pm_hours"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter PM Hours"
+                    value="{{ old('pm_hours', $category->pm_hours)}}"
                 >
             </div>
 
@@ -99,6 +108,7 @@
                     name="task_no"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter Task No"
+                    value="{{ old('task_no', $category->task_no)}}"
                 >
             </div>
 
@@ -114,6 +124,7 @@
                     name="pm_frequency"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter PM Frequency"
+                    value="{{ old('pm_frequency', $category->pm_frequency)}}"
                 >
             </div>
 
@@ -126,12 +137,10 @@
                     id="fda_risk"
                 >
                     <option selected disabled>Select FDA Risk</option>
-                    <option>Alaska</option>
-                    <option>California</option>
-                    <option>Delaware</option>
-                    <option>Tennessee</option>
-                    <option>Texas</option>
-                    <option>Washington</option>
+                    <option {{ old('fda_risk', $category->fda_risk) == 'NO RISK' ? 'selected' : '' }} value="NO RISK">NO RISK</option>
+                    <option {{ old('fda_risk', $category->fda_risk) == 'Low Risk' ? 'selected' : '' }} value="Low Risk">Low Risk</option>
+                    <option {{ old('fda_risk', $category->fda_risk) == 'Medium Risk' ? 'selected' : '' }} value="Medium Risk">Medium Risk</option>
+                    <option {{ old('fda_risk', $category->fda_risk) == 'High Risk' ? 'selected' : '' }} value="High Risk">High Risk</option>
                 </select>
             </div>
 
@@ -144,12 +153,13 @@
                     id="proficiency_level"
                 >
                     <option selected disabled>Select Proficiency Level</option>
-                    <option>Level 01</option>
-                    <option>Level 02</option>
-                    <option>Level 03</option>
-                    <option>Level 04</option>
-                    <option>Level 05</option>
-                    <option>Level 06</option>
+                    <option {{ old('proficiency_level', $category->proficiency_level) == 0 ? 'selected' : '' }} value="0">Level 0</option>
+                    <option {{ old('proficiency_level', $category->proficiency_level) == 1 ? 'selected' : '' }} value="1">Level 01</option>
+                    <option {{ old('proficiency_level', $category->proficiency_level) == 2 ? 'selected' : '' }} value="2">Level 02</option>
+                    <option {{ old('proficiency_level', $category->proficiency_level) == 3 ? 'selected' : '' }} value="3">Level 03</option>
+                    <option {{ old('proficiency_level', $category->proficiency_level) == 4 ? 'selected' : '' }} value="4">Level 04</option>
+                    <option {{ old('proficiency_level', $category->proficiency_level) == 5 ? 'selected' : '' }} value="5">Level 05</option>
+                    <option {{ old('proficiency_level', $category->proficiency_level) == 6 ? 'selected' : '' }} value="6">Level 06</option>
                 </select>
             </div>
 
@@ -162,7 +172,7 @@
                     rows="5"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter Required Tools"
-                ></textarea>
+                >{{ old('tools_required', $category->tools_required) }}</textarea>
             </div>
 
             <div class="form-group">
@@ -174,7 +184,7 @@
                     rows="5"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter Safety Instructions"
-                ></textarea>
+                >{{ old('safety_instructions', $category->safety_instructions) }}</textarea>
             </div>
 
             <div class="form-group">
@@ -185,10 +195,11 @@
                     name="est_service_life"
                     class="form-control form-control-sm rounded-0"
                     placeholder="Enter EST Service Life"
+                    value="{{ old('est_service_life', $category->est_service_life)}}"
                 >
             </div>
 
-            <x-SubmitButton :btnText="'Create Category'" :cancelBtnRoute="route('categories.index')"></x-SubmitButton>
+            <x-SubmitButton :btnText="$btnText" :cancelBtnRoute="route('categories.index')"></x-SubmitButton>
 
         </div>
 

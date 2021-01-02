@@ -13,6 +13,13 @@ class Manufacturer extends Model
     protected $primaryKey = 'manufacturer_id';
 
     /**
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = false;
+
+    /**
      * The attributes that are mass assignable.
      */
     protected $fillable = [
@@ -29,4 +36,12 @@ class Manufacturer extends Model
         'fax_number',
         'email',
     ];
+
+    /**
+     * Get the assets for the manufacturer.
+     */
+    public function assets()
+    {
+        return $this->hasMany(Asset::class, 'manufacturer_id');
+    }
 }

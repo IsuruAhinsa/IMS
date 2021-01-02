@@ -18,7 +18,7 @@
                     name="manufacturer_id"
                     class="form-control form-control-sm rounded-0 @error('manufacturer_id') is-invalid @enderror"
                     placeholder="Enter Manufacturer ID"
-                    value="{{ $manufacturer_id }}"
+                    value="{{ old('manufacturer_id', $manufacturer->manufacturer_id) }}"
                 >
             </div>
 
@@ -30,7 +30,7 @@
                     name="manufacturer_code"
                     class="form-control form-control-sm rounded-0 @error('manufacturer_code') is-invalid @enderror"
                     placeholder="Enter Manufacturer Code"
-                    value="{{ $manufacturer_code }}"
+                    value="{{ old('manufacturer_code', $manufacturer->manufacturer_code) }}"
                 >
             </div>
 
@@ -42,7 +42,7 @@
                     name="manufacturer_name"
                     class="form-control form-control-sm rounded-0 @error('manufacturer_name') is-invalid @enderror"
                     placeholder="Enter Manufacturer Name"
-                    value="{{ $manufacturer_name }}"
+                    value="{{ old('manufacturer_name', $manufacturer->manufacturer_name) }}"
                 >
             </div>
 
@@ -54,7 +54,7 @@
                     name="contact_person"
                     class="form-control form-control-sm rounded-0 @error('contact_person') is-invalid @enderror"
                     placeholder="Enter Contact Person"
-                    value="{{ $contact_person }}"
+                    value="{{ old('contact_person', $manufacturer->contact_person) }}"
                 >
             </div>
 
@@ -66,7 +66,7 @@
                     name="address"
                     class="form-control form-control-sm rounded-0 @error('address') is-invalid @enderror"
                     placeholder="Enter Address"
-                    value="{{ $address }}"
+                    value="{{ old('address', $manufacturer->address) }}"
                 >
             </div>
 
@@ -78,7 +78,7 @@
                     name="city"
                     class="form-control form-control-sm rounded-0 @error('city') is-invalid @enderror"
                     placeholder="Enter City"
-                    value="{{ $city }}"
+                    value="{{ old('city', $manufacturer->city) }}"
                 >
             </div>
 
@@ -94,7 +94,7 @@
                     name="state_or_province"
                     class="form-control form-control-sm rounded-0 @error('state_or_province') is-invalid @enderror"
                     placeholder="Enter State or Province"
-                    value="{{ $state_or_province }}"
+                    value="{{ old('state_or_province', $manufacturer->state_or_province) }}"
                 >
             </div>
 
@@ -106,7 +106,7 @@
                     name="postal_code"
                     class="form-control form-control-sm rounded-0 @error('postal_code') is-invalid @enderror"
                     placeholder="Enter Country"
-                    value="{{ $postal_code }}"
+                    value="{{ old('postal_code', $manufacturer->postal_code) }}"
                 >
             </div>
 
@@ -118,7 +118,7 @@
                     name="country"
                     class="form-control form-control-sm rounded-0 @error('country') is-invalid @enderror"
                     placeholder="Enter Postal Code"
-                    value="{{ $country }}"
+                    value="{{ old('country', $manufacturer->country) }}"
                 >
             </div>
 
@@ -130,7 +130,7 @@
                     name="phone_number"
                     class="form-control form-control-sm rounded-0 @error('phone_number') is-invalid @enderror"
                     placeholder="Enter Phone"
-                    value="{{ $phone_number }}"
+                    value="{{ old('phone_number', $manufacturer->phone_number) }}"
                 >
             </div>
 
@@ -142,7 +142,7 @@
                     name="fax_number"
                     class="form-control form-control-sm rounded-0 @error('fax_number') is-invalid @enderror"
                     placeholder="Enter Fax"
-                    value="{{ $fax_number }}"
+                    value="{{ old('fax_number', $manufacturer->fax_number) }}"
                 >
             </div>
 
@@ -154,7 +154,7 @@
                     name="email"
                     class="form-control form-control-sm rounded-0 @error('email') is-invalid @enderror"
                     placeholder="Enter Email"
-                    value="{{ $email }}"
+                    value="{{ old('email', $manufacturer->email) }}"
                 >
             </div>
 

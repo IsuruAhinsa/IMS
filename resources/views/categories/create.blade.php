@@ -43,8 +43,10 @@
                                 <x-Alert type="danger" :message="$errors->first()"></x-Alert>
                             @endif
 
-                            @include('forms.categories.create')
-
+                            @include('forms.categories.create', [
+                                'route' => route('categories.store'),
+                                'btnText' => 'Create Category',
+                            ])
                         </div>
                     </div>
                 </div>

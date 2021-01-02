@@ -100,20 +100,20 @@
                                 <tbody>
                                 @foreach($accessories as $accessory)
                                     <tr>
-                                        <td>{{ $accessory->first_name ? $accessory->first_name : '-' }}</td>
-                                        <td>{{ $accessory->first_name ? $accessory->first_name : '-' }}</td>
-                                        <td>{{ $accessory->last_name ? $accessory->last_name : '-' }}</td>
-                                        <td>{{ $accessory->email ? $accessory->email : '-' }}</td>
-                                        <td>{{ $accessory->phone ? $accessory->phone : '-' }}</td>
-                                        <td>{{ $accessory->website ? $accessory->website : '-' }}</td>
-                                        <td>{{ $accessory->getFullAddress() ? $accessory->getFullAddress() : '-' }}</td>
+                                        <td>{{ $accessory->asset_tag_id ? $accessory->asset_tag_id : '-' }}</td>
+                                        <td>{{ $accessory->asset_tag ? $accessory->asset_tag : '-' }}</td>
+                                        <td>{{ $accessory->asset_name ? $accessory->asset_name : '-' }}</td>
+                                        <td>{{ $accessory->asset_disacription ? $accessory->asset_disacription : '-' }}</td>
+                                        <td>{{ $accessory->asset_model ? $accessory->asset_model : '-' }}</td>
+                                        <td>{{ $accessory->asset_serial ? $accessory->asset_serial : '-' }}</td>
+                                        <td>{{ $accessory->asset_manufacture ? $accessory->asset_manufacture : '-' }}</td>
                                         <td class="text-center">
                                             <x-ActionButtonGroup
-                                                :viewRoute="route('accessories.show', $accessory->id)"
-                                                :editRoute="route('accessories.edit', $accessory->id)"
-                                                :deleteRoute="route('accessories.destroy', $accessory->id)"
-                                                :forceDeleteRoute="route('accessories.fdelete', $accessory->id)"
-                                                :restoreRoute="route('accessories.restore', $accessory->id)"
+                                                :viewRoute="route('accessories.show', $accessory->asset_tag_id)"
+                                                :editRoute="route('accessories.edit', $accessory->asset_tag_id)"
+                                                :deleteRoute="route('accessories.destroy', $accessory->asset_tag_id)"
+                                                :forceDeleteRoute="route('accessories.fdelete', $accessory->asset_tag_id)"
+                                                :restoreRoute="route('accessories.restore', $accessory->asset_tag_id)"
                                             ></x-ActionButtonGroup>
                                         </td>
                                     </tr>

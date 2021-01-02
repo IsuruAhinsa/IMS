@@ -82,16 +82,16 @@
                                 <tbody>
                                 @foreach($departments as $department)
                                     <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>{{ $department->department_id ? $department->department_id : '-' }}</td>
+                                        <td>{{ $department->department_code ? $department->department_code : '-' }}</td>
+                                        <td>{{ $department->description ? $department->description : '-' }}</td>
                                         <td class="text-center">
                                             <x-ActionButtonGroup
-                                                :viewRoute="route('departments.show', $department->id)"
-                                                :editRoute="route('departments.edit', $department->id)"
-                                                :deleteRoute="route('departments.destroy', $department->id)"
-                                                :forceDeleteRoute="route('departments.fdelete', $department->id)"
-                                                :restoreRoute="route('departments.restore', $department->id)"
+                                                :viewRoute="route('departments.show', $department->department_id)"
+                                                :editRoute="route('departments.edit', $department->department_id)"
+                                                :deleteRoute="route('departments.destroy', $department->department_id)"
+                                                :forceDeleteRoute="route('departments.fdelete', $department->department_id)"
+                                                :restoreRoute="route('departments.restore', $department->department_id)"
                                             ></x-ActionButtonGroup>
                                         </td>
                                     </tr>

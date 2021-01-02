@@ -1,6 +1,10 @@
-<form action="{{ route('departments.store') }}" method="POST">
+<form action="{{ $route }}" method="POST">
 
     @csrf
+
+    @if(Route::currentRouteName() == 'departments.edit')
+        @method('PUT')
+    @endif
 
     <div class="form-group">
         <label for="department_id" class="col-form-label">Department ID</label>
@@ -10,6 +14,7 @@
             name="department_id"
             class="form-control form-control-sm rounded-0"
             placeholder="Enter Department ID"
+            value="{{ old('department_id', $department->department_id) }}"
         >
     </div>
 
@@ -21,6 +26,7 @@
             name="department_code"
             class="form-control form-control-sm rounded-0"
             placeholder="Enter Department Code"
+            value="{{ old('department_code', $department->department_code) }}"
         >
     </div>
 
@@ -33,9 +39,9 @@
             rows="5"
             class="form-control form-control-sm rounded-0"
             placeholder="Enter Description"
-        ></textarea>
+        >{{ old('description', $department->description) }}</textarea>
     </div>
 
-    <x-SubmitButton :btnText="'Create Department'" :cancelBtnRoute="route('hospitals.index')"></x-SubmitButton>
+    <x-SubmitButton :btnText="$btnText" :cancelBtnRoute="route('departments.index')"></x-SubmitButton>
 
 </form>

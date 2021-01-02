@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SaveManufacturerRequest;
 use App\Manufacturer;
 use Illuminate\Http\Request;
 
@@ -27,7 +28,7 @@ class ManufacturerController extends Controller
      */
     public function create()
     {
-        return view('manufacturers.create');
+        return view('manufacturers.create')->with('manufacturer', new Manufacturer);
     }
 
     /**
@@ -35,7 +36,7 @@ class ManufacturerController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(SaveManufacturerRequest $request)
     {
         $manufacturer = new Manufacturer;
         $manufacturer->manufacturer_id = $request->input('manufacturer_id');
@@ -45,8 +46,8 @@ class ManufacturerController extends Controller
         $manufacturer->address = $request->input('address');
         $manufacturer->city = $request->input('city');
         $manufacturer->state_or_province = $request->input('state_or_province');
-        $manufacturer->country = $request->input('postal_code');
-        $manufacturer->postal_code = $request->input('country');
+        $manufacturer->country = $request->input('country');
+        $manufacturer->postal_code = $request->input('postal_code');
         $manufacturer->phone_number = $request->input('phone_number');
         $manufacturer->fax_number = $request->input('fax_number');
         $manufacturer->email = $request->input('email');
@@ -81,7 +82,7 @@ class ManufacturerController extends Controller
      * @param Manufacturer $manufacturer
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Manufacturer $manufacturer)
+    public function update(SaveManufacturerRequest $request, Manufacturer $manufacturer)
     {
         $manufacturer->manufacturer_id = $request->input('manufacturer_id');
         $manufacturer->manufacturer_code = $request->input('manufacturer_code');
@@ -90,8 +91,8 @@ class ManufacturerController extends Controller
         $manufacturer->address = $request->input('address');
         $manufacturer->city = $request->input('city');
         $manufacturer->state_or_province = $request->input('state_or_province');
-        $manufacturer->country = $request->input('postal_code');
-        $manufacturer->postal_code = $request->input('country');
+        $manufacturer->country = $request->input('country');
+        $manufacturer->postal_code = $request->input('postal_code');
         $manufacturer->phone_number = $request->input('phone_number');
         $manufacturer->fax_number = $request->input('fax_number');
         $manufacturer->email = $request->input('email');

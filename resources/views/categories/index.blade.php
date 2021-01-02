@@ -112,26 +112,26 @@
                                 <tbody>
                                 @foreach($categories as $category)
                                     <tr>
-                                        <td>{{ $category->first_name ? $category->first_name : '-' }}</td>
-                                        <td>{{ $category->first_name ? $category->first_name : '-' }}</td>
-                                        <td>{{ $category->last_name ? $category->last_name : '-' }}</td>
-                                        <td>{{ $category->email ? $category->email : '-' }}</td>
-                                        <td>{{ $category->phone ? $category->phone : '-' }}</td>
-                                        <td>{{ $category->website ? $category->website : '-' }}</td>
-                                        <td>{{ $category->getFullAddress() ? $category->getFullAddress() : '-' }}</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>{{ $category->created_at->toDateString() }}</td>
+                                        <td>{{ $category->ecri_code ? $category->ecri_code : '-' }}</td>
+                                        <td>{{ $category->asset_category ? $category->asset_category : '-' }}</td>
+                                        <td>{{ $category->asset_definition ? $category->asset_definition : '-' }}</td>
+                                        <td>{{ $category->asset_type ? $category->asset_type : '-' }}</td>
+                                        <td>{{ $category->classification ? $category->classification : '-' }}</td>
+                                        <td>{{ $category->pm_hours ? $category->pm_hours : '-' }}</td>
+                                        <td>{{ $category->task_no ? $category->task_no : '-' }}</td>
+                                        <td>{{ $category->pm_frequency ? $category->pm_frequency : '-' }}</td>
+                                        <td>{{ $category->fda_risk ? $category->fda_risk : '-' }}</td>
+                                        <td>{{ $category->proficiency_level ? $category->proficiency_level : '-' }}</td>
+                                        <td>{{ $category->tools_required ? $category->tools_required : '-' }}</td>
+                                        <td>{{ $category->safety_instructions ? $category->safety_instructions : '-' }}</td>
+                                        <td>{{ $category->est_service_life ? $category->est_service_life : '-' }}</td>
                                         <td class="text-center">
                                             <x-ActionButtonGroup
-                                                :viewRoute="route('categories.show', $category->id)"
-                                                :editRoute="route('categories.edit', $category->id)"
-                                                :deleteRoute="route('categories.destroy', $category->id)"
-                                                :forceDeleteRoute="route('categories.fdelete', $category->id)"
-                                                :restoreRoute="route('categories.restore', $category->id)"
+                                                :viewRoute="route('categories.show', $category->asset_category_id)"
+                                                :editRoute="route('categories.edit', $category->asset_category_id)"
+                                                :deleteRoute="route('categories.destroy', $category->asset_category_id)"
+                                                :forceDeleteRoute="route('categories.fdelete', $category->asset_category_id)"
+                                                :restoreRoute="route('categories.restore', $category->asset_category_id)"
                                             ></x-ActionButtonGroup>
                                         </td>
                                     </tr>

@@ -45,8 +45,6 @@
 
                             @include('forms.locations.create', [
                                 'route' => route('locations.store'),
-                                'locationCodeVal' => old('location_code'),
-                                'descriptionVal' => old('description'),
                                 'btnText' => 'Create Location',
                             ])
 

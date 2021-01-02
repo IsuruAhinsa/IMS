@@ -27,9 +27,9 @@
     </section>
 
     <section class="content">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row d-flex justify-content-center">
-                <div class="col-md-9">
+                <div class="col-md-12">
                     <div class="card card-{{ $commonSetting ? $commonSetting->skin : 'primary' }} card-outline">
 
                         <div class="card-header">
@@ -39,11 +39,18 @@
 
                         <div class="card-body p-5">
 
+                            @if(session()->has('success'))
+                                <x-Alert type="success" :message="session()->get('success')"></x-Alert>
+                            @endif
+
                             @if($errors->any())
                                 <x-Alert type="danger" :message="$errors->first()"></x-Alert>
                             @endif
 
-                            @include('forms.assets.create')
+                            @include('forms.assets.create', [
+                                'route' => route('assets.update', $asset->asset_id),
+                                'btnText' => 'Update Asset',
+                            ])
 
                         </div>
                     </div>

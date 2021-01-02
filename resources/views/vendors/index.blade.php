@@ -106,24 +106,24 @@
                                 <tbody>
                                 @foreach($vendors as $vendor)
                                     <tr>
-                                        <td>{{ $vendor->first_name ? $vendor->first_name : '-' }}</td>
-                                        <td>{{ $vendor->first_name ? $vendor->first_name : '-' }}</td>
-                                        <td>{{ $vendor->last_name ? $vendor->last_name : '-' }}</td>
+                                        <td>{{ $vendor->vendor_code ? $vendor->vendor_code : '-' }}</td>
+                                        <td>{{ $vendor->supplier_name ? $vendor->supplier_name : '-' }}</td>
+                                        <td>{{ $vendor->contact_person ? $vendor->contact_person : '-' }}</td>
+                                        <td>{{ $vendor->address ? $vendor->address : '-' }}</td>
+                                        <td>{{ $vendor->city ? $vendor->city : '-' }}</td>
+                                        <td>{{ $vendor->state_or_province ? $vendor->state_or_province : '-' }}</td>
+                                        <td>{{ $vendor->postal_code ? $vendor->postal_code : '-' }}</td>
+                                        <td>{{ $vendor->country ? $vendor->country : '-' }}</td>
+                                        <td>{{ $vendor->phone_number ? $vendor->phone_number : '-' }}</td>
+                                        <td>{{ $vendor->fax_number ? $vendor->fax_number : '-' }}</td>
                                         <td>{{ $vendor->email ? $vendor->email : '-' }}</td>
-                                        <td>{{ $vendor->phone ? $vendor->phone : '-' }}</td>
-                                        <td>{{ $vendor->website ? $vendor->website : '-' }}</td>
-                                        <td>{{ $vendor->getFullAddress() ? $vendor->getFullAddress() : '-' }}</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>{{ $vendor->created_at->toDateString() }}</td>
                                         <td class="text-center">
                                             <x-ActionButtonGroup
-                                                :viewRoute="route('vendors.show', $vendor->id)"
-                                                :editRoute="route('vendors.edit', $vendor->id)"
-                                                :deleteRoute="route('vendors.destroy', $vendor->id)"
-                                                :forceDeleteRoute="route('vendors.fdelete', $vendor->id)"
-                                                :restoreRoute="route('vendors.restore', $vendor->id)"
+                                                :viewRoute="route('vendors.show', $vendor->vendor_id)"
+                                                :editRoute="route('vendors.edit', $vendor->vendor_id)"
+                                                :deleteRoute="route('vendors.destroy', $vendor->vendor_id)"
+                                                :forceDeleteRoute="route('vendors.fdelete', $vendor->vendor_id)"
+                                                :restoreRoute="route('vendors.restore', $vendor->vendor_id)"
                                             ></x-ActionButtonGroup>
                                         </td>
                                     </tr>

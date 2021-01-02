@@ -12,6 +12,13 @@ class Vendor extends Model
     protected $primaryKey = 'vendor_id';
 
     /**
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = false;
+
+    /**
      * The attributes that are mass assignable.
      */
     protected $fillable = [
@@ -28,4 +35,12 @@ class Vendor extends Model
         'fax_number',
         'email',
     ];
+
+    /**
+     * Get the assets for the vendor.
+     */
+    public function assets()
+    {
+        return $this->hasMany(Asset::class, 'vendor_id');
+    }
 }

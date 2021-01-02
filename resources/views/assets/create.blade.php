@@ -47,7 +47,10 @@
                                 <x-Alert type="danger" :message="$errors->first()"></x-Alert>
                             @endif
 
-                            @include('forms.assets.create')
+                            @include('forms.assets.create', [
+                                'route' => route('assets.store'),
+                                'btnText' => 'Create Asset',
+                            ])
 
                         </div>
                     </div>
